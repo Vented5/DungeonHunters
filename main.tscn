@@ -1,0 +1,23 @@
+[gd_scene load_steps=6 format=3 uid="uid://cht2ngyuph4ad"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_mtfga"]
+[ext_resource type="Texture2D" uid="uid://ri4h47dj2eer" path="res://background.jpg" id="2_nr6sa"]
+[ext_resource type="PackedScene" uid="uid://dq1vsa5w8gn5o" path="res://slime/slime.tscn" id="3_ultmg"]
+[ext_resource type="Script" path="res://slime/slime.gd" id="4_hccb8"]
+[ext_resource type="PackedScene" uid="uid://ccmmtdh4ow8pv" path="res://player.tscn" id="6_cp752"]
+
+[node name="Main" type="Node"]
+script = ExtResource("1_mtfga")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(662, 353)
+scale = Vector2(1.5, 1.25)
+texture = ExtResource("2_nr6sa")
+
+[node name="Slime" parent="." instance=ExtResource("3_ultmg")]
+position = Vector2(534, 369)
+scale = Vector2(0.75, 0.75)
+script = ExtResource("4_hccb8")
+
+[node name="Player" parent="." instance=ExtResource("6_cp752")]
+position = Vector2(731, 344)

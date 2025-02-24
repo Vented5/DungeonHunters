@@ -1,0 +1,49 @@
+[gd_scene load_steps=10 format=3 uid="uid://ccmmtdh4ow8pv"]
+
+[ext_resource type="Script" path="res://player.gd" id="1_0mjch"]
+[ext_resource type="Texture2D" uid="uid://h3efkbgc3bs7" path="res://dogo/Dogue - walk/1.png" id="2_478qo"]
+[ext_resource type="Texture2D" uid="uid://do58q7gn78s0s" path="res://dogo/Dogue - walk/2.png" id="3_valh5"]
+[ext_resource type="Texture2D" uid="uid://dk0jauk3e8l8k" path="res://dogo/Dogue - walk/3.png" id="4_rfxge"]
+[ext_resource type="Texture2D" uid="uid://5iejs74lyogn" path="res://dogo/Dogue - walk/4.png" id="5_kphb1"]
+[ext_resource type="Texture2D" uid="uid://dhk6acby2m7ri" path="res://dogo/Dogue - walk/5.png" id="6_gq4a0"]
+[ext_resource type="PackedScene" uid="uid://dmqo0lbsrv8ql" path="res://sword.tscn" id="7_i5f33"]
+[ext_resource type="PackedScene" uid="uid://bfpwvn2sdydk5" path="res://Camera2D_scene.tscn" id="8_2wtte"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_odpen"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_478qo")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_valh5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_rfxge")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_kphb1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_gq4a0")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_0mjch")
+weapon_scene = ExtResource("7_i5f33")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_odpen")
+animation = &"walk"
+
+[node name="Camera2D" parent="." instance=ExtResource("8_2wtte")]
+scale = Vector2(0.942599, 1.06142)

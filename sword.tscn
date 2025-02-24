@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dmqo0lbsrv8ql"]
+
+[ext_resource type="Texture2D" uid="uid://dar4jqlakhe5g" path="res://art/wand.png" id="1_jk38o"]
+
+[node name="Sword" type="Sprite2D"]
+self_modulate = Color(1, 1, 1, 0.572549)
+position = Vector2(0, -9)
+texture = ExtResource("1_jk38o")

@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bfpwvn2sdydk5"]
+
+[ext_resource type="PackedScene" uid="uid://cn0oait4m0s65" path="res://ui/joystick/joystick.tscn" id="1_mbd8b"]
+
+[node name="Camera2D" type="Camera2D"]
+
+[node name="Joystick" parent="." instance=ExtResource("1_mbd8b")]
+position = Vector2(-514, 195)
+scale = Vector2(2, 2)

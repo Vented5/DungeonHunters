@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cht2ngyuph4ad"]
+[gd_scene load_steps=6 format=3 uid="uid://cht2ngyuph4ad"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_mtfga"]
 [ext_resource type="Texture2D" uid="uid://ri4h47dj2eer" path="res://background.jpg" id="2_nr6sa"]
@@ -6,16 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://dq1vsa5w8gn5o" path="res://slime/slime.tscn" id="3_ultmg"]
 [ext_resource type="PackedScene" uid="uid://dmqo0lbsrv8ql" path="res://sword.tscn" id="5_67oaq"]
 
-[sub_resource type="Curve2D" id="Curve2D_p1a8s"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, -144, -96, 0, 0, 0, 0, 1472, -96, 0, 0, 0, 0, 1472, 800, 0, 0, 0, 0, -144, 800, 0, 0, 0, 0, -144, -96)
-}
-point_count = 5
-
 [node name="Main" type="Node"]
 script = ExtResource("1_mtfga")
-slime_scene = ExtResource("3_ultmg")
-player_scene = ExtResource("3_kvypv")
 
 [node name="Background" type="Sprite2D" parent="."]
 position = Vector2(662, 353)
@@ -23,15 +15,9 @@ scale = Vector2(1.5, 1.25)
 texture = ExtResource("2_nr6sa")
 
 [node name="Player" parent="." instance=ExtResource("3_kvypv")]
-position = Vector2(224, 163)
-
-[node name="Sword" parent="Player" instance=ExtResource("5_67oaq")]
-
-[node name="Mob_spawn_path" type="Path2D" parent="."]
-curve = SubResource("Curve2D_p1a8s")
-
-[node name="Mob_spawn_location" type="PathFollow2D" parent="Mob_spawn_path"]
-position = Vector2(-144, -96)
-
-[node name="Player_spawn" type="Marker2D" parent="."]
 position = Vector2(640, 360)
+weapon_scene = ExtResource("5_67oaq")
+metadata/_edit_group_ = true
+
+[node name="Slime" parent="." instance=ExtResource("3_ultmg")]
+position = Vector2(962, 444)

@@ -1,45 +1,24 @@
-[gd_scene load_steps=9 format=3 uid="uid://ccmmtdh4ow8pv"]
+[gd_scene load_steps=6 format=3 uid="uid://qiw2xgc314o0"]
 
-[ext_resource type="Script" path="res://player.gd" id="1_0mjch"]
-[ext_resource type="Texture2D" uid="uid://h3efkbgc3bs7" path="res://dogo/Dogue - walk/1.png" id="2_478qo"]
-[ext_resource type="Texture2D" uid="uid://do58q7gn78s0s" path="res://dogo/Dogue - walk/2.png" id="3_valh5"]
-[ext_resource type="Texture2D" uid="uid://dk0jauk3e8l8k" path="res://dogo/Dogue - walk/3.png" id="4_rfxge"]
-[ext_resource type="Texture2D" uid="uid://5iejs74lyogn" path="res://dogo/Dogue - walk/4.png" id="5_kphb1"]
-[ext_resource type="Texture2D" uid="uid://dhk6acby2m7ri" path="res://dogo/Dogue - walk/5.png" id="6_gq4a0"]
+[ext_resource type="Script" path="res://player.gd" id="1_lrge0"]
+[ext_resource type="Texture2D" uid="uid://dm7ftww5fc7ew" path="res://art/dogo (2).png" id="1_yipfr"]
+[ext_resource type="PackedScene" uid="uid://bfpwvn2sdydk5" path="res://Camera2D_scene.tscn" id="2_2piky"]
 [ext_resource type="PackedScene" uid="uid://dmqo0lbsrv8ql" path="res://sword.tscn" id="7_i5f33"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_odpen"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("2_478qo")
-}],
-"loop": true,
-"name": &"Idle",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("3_valh5")
-}, {
-"duration": 1.0,
-"texture": ExtResource("4_rfxge")
-}, {
-"duration": 1.0,
-"texture": ExtResource("5_kphb1")
-}, {
-"duration": 1.0,
-"texture": ExtResource("6_gq4a0")
-}],
-"loop": true,
-"name": &"walk",
-"speed": 5.0
-}]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3hfim"]
+size = Vector2(124, 149)
 
 [node name="Player" type="CharacterBody2D"]
-script = ExtResource("1_0mjch")
+script = ExtResource("1_lrge0")
 weapon_scene = ExtResource("7_i5f33")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_odpen")
-animation = &"walk"
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_yipfr")
+
+[node name="Camera2D" parent="." instance=ExtResource("2_2piky")]
+scale = Vector2(0.942599, 1.06142)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, -0.5)
+shape = SubResource("RectangleShape2D_3hfim")
+disabled = true

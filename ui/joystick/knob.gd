@@ -20,7 +20,7 @@ func _process(delta):
 	else:
 		global_position = lerp(global_position, get_parent().global_position, delta*50)
 		get_parent().pos_vector = Vector2.ZERO
-	print(get_parent().pos_vector)
+	#print(get_parent().pos_vector)
 
 func calculate_vector():
 	if abs(global_position.x - get_parent().global_position.x) >= dead_zone:

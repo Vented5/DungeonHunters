@@ -1,8 +1,74 @@
-[gd_scene load_steps=2 format=3 uid="uid://dmqo0lbsrv8ql"]
+[gd_scene load_steps=5 format=3 uid="uid://dmqo0lbsrv8ql"]
 
-[ext_resource type="Texture2D" uid="uid://dar4jqlakhe5g" path="res://art/wand.png" id="1_jk38o"]
+[ext_resource type="Texture2D" uid="uid://c4ye486auqowg" path="res://art/sword.png" id="1_71msh"]
+
+[sub_resource type="Animation" id="Animation_lbrs3"]
+resource_name = "attack"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-160, -100), Vector2(-160, 100)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.22173, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_ccvwf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_y7yyu"]
+_data = {
+"RESET": SubResource("Animation_ccvwf"),
+"attack": SubResource("Animation_lbrs3")
+}
 
 [node name="Sword" type="Sprite2D"]
 self_modulate = Color(1, 1, 1, 0.572549)
-position = Vector2(0, -9)
-texture = ExtResource("1_jk38o")
+texture = ExtResource("1_71msh")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_y7yyu")
+}

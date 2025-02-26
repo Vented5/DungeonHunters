@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://cht2ngyuph4ad"]
+[gd_scene load_steps=8 format=3 uid="uid://cht2ngyuph4ad"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_mtfga"]
 [ext_resource type="Texture2D" uid="uid://ri4h47dj2eer" path="res://background.jpg" id="2_nr6sa"]
 [ext_resource type="PackedScene" uid="uid://qiw2xgc314o0" path="res://player.tscn" id="3_kvypv"]
 [ext_resource type="PackedScene" uid="uid://dq1vsa5w8gn5o" path="res://slime/slime.tscn" id="3_ultmg"]
 [ext_resource type="PackedScene" uid="uid://dmqo0lbsrv8ql" path="res://sword.tscn" id="5_67oaq"]
+[ext_resource type="PackedScene" uid="uid://bfpwvn2sdydk5" path="res://Camera2D_scene.tscn" id="6_bkfw8"]
 
 [sub_resource type="Curve2D" id="Curve2D_p1a8s"]
 _data = {
@@ -23,9 +24,12 @@ scale = Vector2(1.5, 1.25)
 texture = ExtResource("2_nr6sa")
 
 [node name="Player" parent="." instance=ExtResource("3_kvypv")]
-position = Vector2(224, 163)
+position = Vector2(640, 360)
 
 [node name="Sword" parent="Player" instance=ExtResource("5_67oaq")]
+
+[node name="Camera2D" parent="Player" instance=ExtResource("6_bkfw8")]
+scale = Vector2(0.942599, 1.06142)
 
 [node name="Mob_spawn_path" type="Path2D" parent="."]
 curve = SubResource("Curve2D_p1a8s")
@@ -35,3 +39,10 @@ position = Vector2(-144, -96)
 
 [node name="Player_spawn" type="Marker2D" parent="."]
 position = Vector2(640, 360)
+
+[node name="Slime_timer" type="Timer" parent="."]
+
+[connection signal="pressed" from="Player/Camera2D/TouchScreenButton" to="Player" method="_on_touch_screen_button_pressed"]
+[connection signal="timeout" from="Slime_timer" to="." method="_on_slime_timer_timeout"]
+
+[editable path="Player/Camera2D"]

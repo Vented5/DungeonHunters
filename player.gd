@@ -1,5 +1,5 @@
 extends CharacterBody2D
-@onready var joystick = $"Camera2D/Joystick"
+@onready var joystick
 @export var weapon_scene: PackedScene
 var weapon
 var weapon_animation
@@ -7,7 +7,7 @@ var speed = 300
 var direction
 
 var radius: float = 150
-var attack_duration: float = 10
+var attack_duration: float = 0.2
 var initial_angle
 var final_angle
 var attack_tween
@@ -15,6 +15,9 @@ var attack_tween
 func _ready():
 	#weapon = weapon_scene.instantiate()
 	weapon = $Sword
+	joystick = $Camera2D/Joystick
+	weapon.collision_mask &= ~2
+	print("Máscara inicial:", weapon.collision_mask)
 	#weapon.collision_layer = 0
 	#add_child(weapon)
 
@@ -55,15 +58,22 @@ func _process(delta: float):
 
 	# -------------------------- Actions
 	if Input.is_action_just_pressed("jump"):
-		attack_tween = create_tween()
-		attack_tween.tween_method(attack, 0.0, 1.0, 0.2)
-		await attack_tween.finished
-		weapon.position = Vector2.ZERO
-		if direction.angle() >= (PI/2):
-			weapon.rotation = deg_to_rad(0)
-		else:
-			weapon.rotation = deg_to_rad(250)
-	
+		handle_attack()
+		
+func handle_attack ():
+	weapon.collision_mask |= 2 # Reactiva la mascara de colosion en la posision binaria 2
+	print("Máscara modificada:", weapon.collision_mask)
+	attack_tween = create_tween()
+	attack_tween.tween_method(attack, 0.0, 1.0, attack_duration)
+	await attack_tween.finished
+	weapon.collision_mask &= ~2
+	print("Máscara modificada:", weapon.collision_mask)
+		
+	weapon.position = Vector2.ZERO
+	if direction.angle() >= (PI/2):
+		weapon.rotation = deg_to_rad(0)
+	else:
+		weapon.rotation = deg_to_rad(250)
 
 func attack(t):
 	initial_angle = direction.angle() - PI/4
@@ -82,3 +92,7 @@ func attack(t):
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	pass # Replace with function body.
+
+
+func _on_touch_screen_button_pressed() -> void:
+	handle_attack()

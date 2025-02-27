@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+signal slime_died
+
 var speed = 100
 var direction
 # Called when the node enters the scene tree for the first time.
@@ -28,3 +30,4 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 		# Luego espera un frame para asegurarse de que no haya más procesos pendientes
 		await get_tree().create_timer(0.0).timeout
 		queue_free()  # Elimina el enemigo
+		emit_signal("slime_died")

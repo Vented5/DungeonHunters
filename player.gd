@@ -15,7 +15,7 @@ var attack_tween
 func _ready():
 	#weapon = weapon_scene.instantiate()
 	weapon = $Sword
-	joystick = $Camera2D/Joystick
+	joystick = $"../HUD/Joystick"
 	weapon.collision_mask &= ~2
 	print("Máscara inicial:", weapon.collision_mask)
 	#weapon.collision_layer = 0

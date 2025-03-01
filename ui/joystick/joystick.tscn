@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://ui/joystick/joystick.gd" id="1_xnp4p"]
 [ext_resource type="Texture2D" uid="uid://bixsffx0rruj6" path="res://art/joyknobpng.png" id="2_p81rj"]
-[ext_resource type="Script" path="res://ui/joystick/knob.gd" id="3_gcn3i"]
+[ext_resource type="Script" path="res://ui/knob.gd" id="3_gcn3i"]
 [ext_resource type="Texture2D" uid="uid://brhhdnqeu173j" path="res://art/joyring.png" id="4_hgpxk"]
 
 [node name="Joystick" type="Node2D"]

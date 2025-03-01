@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://fybtkxym01xo"]
+[gd_scene load_steps=3 format=3 uid="uid://fybtkxym01xo"]
 
 [ext_resource type="Script" path="res://menu.gd" id="1_a344x"]
+[ext_resource type="Texture2D" uid="uid://bb8rd34vq2hyy" path="res://TitleScreen.jpg" id="2_km61t"]
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -11,14 +12,31 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_a344x")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="Background" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.450894, 0.635279, 0.309529, 1)
+texture = ExtResource("2_km61t")
+expand_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 216.0
+offset_top = 360.0
+offset_right = 256.0
+offset_bottom = 400.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(10.5713, -17.9905)
+color = Color(0.185172, 0.17374, 0.170411, 0.572549)
 
 [node name="BoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -27,26 +45,41 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -105.5
-offset_top = -87.5
-offset_right = 105.5
-offset_bottom = 87.5
+offset_left = 320.0
+offset_top = -80.0
+offset_right = 531.0
+offset_bottom = 232.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 12
 
-[node name="Button" type="Button" parent="BoxContainer"]
+[node name="Start" type="Button" parent="BoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 64
-text = "PLAY"
+text = "Start
+"
 
-[node name="Button2" type="Button" parent="BoxContainer"]
+[node name="Join" type="Button" parent="BoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 64
-text = "PLAY"
+text = "Join
+"
 
 [node name="Button3" type="Button" parent="BoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 64
-text = "PLAY"
+text = "Host
+"
 
-[connection signal="pressed" from="BoxContainer/Button" to="." method="_on_button_pressed"]
+[node name="Title" type="Label" parent="."]
+layout_mode = 0
+offset_left = 904.0
+offset_top = 56.0
+offset_right = 1231.0
+offset_bottom = 235.0
+theme_override_font_sizes/font_size = 64
+text = "DUNGEON
+HUNTERS"
+horizontal_alignment = 1
+
+[connection signal="pressed" from="BoxContainer/Start" to="." method="_on_button_pressed"]

@@ -4,11 +4,11 @@ signal slime_died
 
 var speed = 100
 var direction
-# Called when the node enters the scene tree for the first time.
+
 func _ready():
 	$AnimatedSprite2D.play("move")
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+
 func _process(delta):
 	var player = get_parent().get_node("Player")
 	direction = get_angle_to(player.position)

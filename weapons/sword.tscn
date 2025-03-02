@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://dmqo0lbsrv8ql"]
 
-[ext_resource type="Texture2D" uid="uid://c4ye486auqowg" path="res://slime/sword.png" id="1_71msh"]
-[ext_resource type="Script" path="res://sword.gd" id="2_48stx"]
+[ext_resource type="Texture2D" uid="uid://c4ye486auqowg" path="res://weapons/sword.png" id="1_71msh"]
+[ext_resource type="Script" path="res://weapons/sword.gd" id="2_48stx"]
 
 [sub_resource type="Animation" id="Animation_ccvwf"]
 length = 0.001

@@ -12,7 +12,7 @@ func _ready():
 	
 	mob_spawn = $Mob_spawn_path/Mob_spawn_location
 	$Slime_timer.start()
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+
 func _process(delta: float) -> void:
 	pass
 

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cw543fi4x2eta"
-path="res://.godot/imported/battle.svg-fd375dceb9b20ec6799c33097babaf04.ctex"
+path="res://.godot/imported/battle.svg-5b58b970c19cc2634f70848770bfe1a7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://battle.svg"
-dest_files=["res://.godot/imported/battle.svg-fd375dceb9b20ec6799c33097babaf04.ctex"]
+source_file="res://ui/battle.svg"
+dest_files=["res://.godot/imported/battle.svg-5b58b970c19cc2634f70848770bfe1a7.ctex"]
 
 [params]
 

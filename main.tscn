@@ -1,11 +1,11 @@
 [gd_scene load_steps=11 format=3 uid="uid://cht2ngyuph4ad"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_mtfga"]
-[ext_resource type="Texture2D" uid="uid://ri4h47dj2eer" path="res://background.jpg" id="2_nr6sa"]
-[ext_resource type="PackedScene" uid="uid://qiw2xgc314o0" path="res://player.tscn" id="3_kvypv"]
+[ext_resource type="Texture2D" uid="uid://ri4h47dj2eer" path="res://art/background.jpg" id="2_nr6sa"]
+[ext_resource type="PackedScene" uid="uid://qiw2xgc314o0" path="res://player/player.tscn" id="3_kvypv"]
 [ext_resource type="PackedScene" uid="uid://dq1vsa5w8gn5o" path="res://slime/slime.tscn" id="3_ultmg"]
-[ext_resource type="PackedScene" uid="uid://dmqo0lbsrv8ql" path="res://sword.tscn" id="5_67oaq"]
-[ext_resource type="Texture2D" uid="uid://cw543fi4x2eta" path="res://battle.svg" id="7_fomfm"]
+[ext_resource type="PackedScene" uid="uid://dmqo0lbsrv8ql" path="res://weapons/sword.tscn" id="5_67oaq"]
+[ext_resource type="Texture2D" uid="uid://cw543fi4x2eta" path="res://ui/battle.svg" id="7_fomfm"]
 [ext_resource type="PackedScene" uid="uid://cn0oait4m0s65" path="res://ui/joystick/joystick.tscn" id="8_e1ji3"]
 
 [sub_resource type="Curve2D" id="Curve2D_p1a8s"]

@@ -18,6 +18,8 @@ func _ready():
 	joystick = $"../HUD/Joystick"
 	weapon.collision_mask &= ~2
 	print("Máscara inicial:", weapon.collision_mask)
+	
+	$Sprite2D.texture = load(Global.character_texture_path) 
 	#weapon.collision_layer = 0
 	#add_child(weapon)
 

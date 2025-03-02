@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://h3efkbgc3bs7"
-path="res://.godot/imported/1.png-f094c618932ef850b6053fabdf3194ce.ctex"
+uid="uid://5iejs74lyogn"
+path="res://.godot/imported/4.png-d4d034965df73fe36144372358ec8b0f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://dogo/Dogue - walk/1.png"
-dest_files=["res://.godot/imported/1.png-f094c618932ef850b6053fabdf3194ce.ctex"]
+source_file="res://art/dogo/Dogue - walk/4.png"
+dest_files=["res://.godot/imported/4.png-d4d034965df73fe36144372358ec8b0f.ctex"]
 
 [params]
 

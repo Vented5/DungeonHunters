@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://qiw2xgc314o0"]
 
-[ext_resource type="Script" path="res://player.gd" id="1_lrge0"]
+[ext_resource type="Script" path="res://player/player.gd" id="1_lrge0"]
 [ext_resource type="Texture2D" uid="uid://dm7ftww5fc7ew" path="res://art/dogo (2).png" id="1_yipfr"]
-[ext_resource type="PackedScene" uid="uid://dmqo0lbsrv8ql" path="res://sword.tscn" id="7_i5f33"]
+[ext_resource type="PackedScene" uid="uid://dmqo0lbsrv8ql" path="res://weapons/sword.tscn" id="7_i5f33"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3hfim"]
 size = Vector2(124, 149)

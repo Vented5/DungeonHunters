@@ -1,12 +1,12 @@
 [gd_scene load_steps=9 format=3 uid="uid://ccmmtdh4ow8pv"]
 
-[ext_resource type="Script" path="res://old_player.gd" id="1_0mjch"]
-[ext_resource type="Texture2D" uid="uid://h3efkbgc3bs7" path="res://dogo/Dogue - walk/1.png" id="2_478qo"]
-[ext_resource type="Texture2D" uid="uid://do58q7gn78s0s" path="res://dogo/Dogue - walk/2.png" id="3_valh5"]
-[ext_resource type="Texture2D" uid="uid://dk0jauk3e8l8k" path="res://dogo/Dogue - walk/3.png" id="4_rfxge"]
-[ext_resource type="Texture2D" uid="uid://5iejs74lyogn" path="res://dogo/Dogue - walk/4.png" id="5_kphb1"]
-[ext_resource type="Texture2D" uid="uid://dhk6acby2m7ri" path="res://dogo/Dogue - walk/5.png" id="6_gq4a0"]
-[ext_resource type="PackedScene" uid="uid://dmqo0lbsrv8ql" path="res://sword.tscn" id="7_i5f33"]
+[ext_resource type="Script" path="res://player/old_player.gd" id="1_0mjch"]
+[ext_resource type="Texture2D" uid="uid://h3efkbgc3bs7" path="res://art/dogo/Dogue - walk/1.png" id="2_478qo"]
+[ext_resource type="Texture2D" uid="uid://do58q7gn78s0s" path="res://art/dogo/Dogue - walk/2.png" id="3_valh5"]
+[ext_resource type="Texture2D" uid="uid://dk0jauk3e8l8k" path="res://art/dogo/Dogue - walk/3.png" id="4_rfxge"]
+[ext_resource type="Texture2D" uid="uid://5iejs74lyogn" path="res://art/dogo/Dogue - walk/4.png" id="5_kphb1"]
+[ext_resource type="Texture2D" uid="uid://dhk6acby2m7ri" path="res://art/dogo/Dogue - walk/5.png" id="6_gq4a0"]
+[ext_resource type="PackedScene" uid="uid://dmqo0lbsrv8ql" path="res://weapons/sword.tscn" id="7_i5f33"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_odpen"]
 animations = [{

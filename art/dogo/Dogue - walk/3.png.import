@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c4ye486auqowg"
-path="res://.godot/imported/sword.png-98491f647c5dc97e8afdc228fdcf3102.ctex"
+uid="uid://dk0jauk3e8l8k"
+path="res://.godot/imported/3.png-89f63db6b4e1234594d5ddcac72a8091.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://slime/sword.png"
-dest_files=["res://.godot/imported/sword.png-98491f647c5dc97e8afdc228fdcf3102.ctex"]
+source_file="res://art/dogo/Dogue - walk/3.png"
+dest_files=["res://.godot/imported/3.png-89f63db6b4e1234594d5ddcac72a8091.ctex"]
 
 [params]
 

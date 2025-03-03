@@ -4,8 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://ri4h47dj2eer" path="res://art/background.jpg" id="2_nr6sa"]
 [ext_resource type="PackedScene" uid="uid://qiw2xgc314o0" path="res://player/player.tscn" id="3_kvypv"]
 [ext_resource type="PackedScene" uid="uid://dq1vsa5w8gn5o" path="res://slime/slime.tscn" id="3_ultmg"]
-[ext_resource type="PackedScene" uid="uid://dmqo0lbsrv8ql" path="res://weapons/sword.tscn" id="5_67oaq"]
 [ext_resource type="PackedScene" uid="uid://bkdkdlpdn4psb" path="res://weapons/bow.tscn" id="6_h22cf"]
+[ext_resource type="PackedScene" uid="uid://dsgjmn1ustteg" path="res://weapons/arrow.tscn" id="6_vklno"]
 [ext_resource type="Texture2D" uid="uid://cw543fi4x2eta" path="res://ui/battle.svg" id="7_fomfm"]
 [ext_resource type="PackedScene" uid="uid://cn0oait4m0s65" path="res://ui/joystick/joystick.tscn" id="8_e1ji3"]
 
@@ -39,12 +39,11 @@ texture = ExtResource("2_nr6sa")
 [node name="Player" parent="." instance=ExtResource("3_kvypv")]
 position = Vector2(640, 360)
 
-[node name="Sword" parent="Player" instance=ExtResource("5_67oaq")]
-
 [node name="Camera2D" type="Camera2D" parent="Player"]
 scale = Vector2(0.942599, 1.06142)
 
 [node name="Bow" parent="Player" instance=ExtResource("6_h22cf")]
+arrow_scene = ExtResource("6_vklno")
 
 [node name="Mob_spawn_path" type="Path2D" parent="."]
 curve = SubResource("Curve2D_p1a8s")

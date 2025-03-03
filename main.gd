@@ -27,7 +27,7 @@ func _on_slime_timer_timeout():
 	slime.connect("slime_died", _on_slime_died, 0)
 
 func _on_slime_died():
-	score += 1
+	score += 100
 	update_score_label()
 
 func update_score_label():

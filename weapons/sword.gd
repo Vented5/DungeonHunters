@@ -15,7 +15,7 @@ func _ready() -> void:
 func _process(delta):
 	direction = player.direction
 	
-	if Input.is_action_just_pressed("jump"):
+	if Input.is_action_just_pressed("attack"):
 		handle_attack()
 
 func handle_attack ():

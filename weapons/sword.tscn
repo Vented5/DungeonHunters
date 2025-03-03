@@ -70,12 +70,12 @@ size = Vector2(161.961, 29.0415)
 
 [node name="Sword" type="Area2D"]
 collision_mask = 0
+script = ExtResource("2_48stx")
 
 [node name="Sword" type="Sprite2D" parent="."]
 self_modulate = Color(1, 1, 1, 0.572549)
 texture = ExtResource("1_71msh")
 offset = Vector2(-5, 0)
-script = ExtResource("2_48stx")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sword"]
 libraries = {

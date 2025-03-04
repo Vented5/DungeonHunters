@@ -8,7 +8,11 @@ func _ready():
 	#weapon = weapon_scene.instantiate()
 	joystick = $"../HUD/Joystick"
 	
+	print(Global.weapon_scene_path)
 	$Sprite2D.texture = load(Global.character_texture_path) 
+	var weapon_scene: PackedScene = load(Global.weapon_scene_path)
+	var weapon = weapon_scene.instantiate()
+	add_child(weapon)
 	#weapon.collision_layer = 0
 	#add_child(weapon)
 

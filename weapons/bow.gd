@@ -1,6 +1,6 @@
 extends Node2D
 
-@export var arrow_scene: PackedScene
+@export var arrow_scene: PackedScene = load("res://weapons/arrow.tscn")
 var player
 
 func _ready() -> void:

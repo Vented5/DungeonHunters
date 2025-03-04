@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bkdkdlpdn4psb"]
 
-[ext_resource type="Texture2D" uid="uid://dguq34gasq1cu" path="res://art/bow.png" id="1_mkiec"]
+[ext_resource type="Texture2D" uid="uid://dguq34gasq1cu" path="res://weapons/bow.png" id="1_mkiec"]
 [ext_resource type="Script" path="res://weapons/bow.gd" id="2_lgnmc"]
 
 [node name="Bow" type="Node2D"]

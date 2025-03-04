@@ -50,8 +50,3 @@ func _process(delta: float):
 	elif direction.x < 0:  # Izquierda
 		$Sprite2D.flip_h = false
 		#weapon.scale.x = -abs(weapon.scale.x)
-
-	# -------------------------- Actions
-
-func _on_area_2d_body_entered(body: Node2D) -> void:
-	pass # Replace with function body.

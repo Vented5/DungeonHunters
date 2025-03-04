@@ -1,0 +1,80 @@
+[gd_scene load_steps=10 format=3 uid="uid://cht2ngyuph4ad"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_mtfga"]
+[ext_resource type="Texture2D" uid="uid://ri4h47dj2eer" path="res://art/background.jpg" id="2_nr6sa"]
+[ext_resource type="PackedScene" uid="uid://qiw2xgc314o0" path="res://player/player.tscn" id="3_kvypv"]
+[ext_resource type="PackedScene" uid="uid://dq1vsa5w8gn5o" path="res://slime/slime.tscn" id="3_ultmg"]
+[ext_resource type="Texture2D" uid="uid://cw543fi4x2eta" path="res://ui/battle.svg" id="7_fomfm"]
+[ext_resource type="PackedScene" uid="uid://cn0oait4m0s65" path="res://ui/joystick/joystick.tscn" id="8_e1ji3"]
+
+[sub_resource type="Curve2D" id="Curve2D_p1a8s"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -144, -96, 0, 0, 0, 0, 1472, -96, 0, 0, 0, 0, 1472, 800, 0, 0, 0, 0, -144, 800, 0, 0, 0, 0, -144, -96)
+}
+point_count = 5
+
+[sub_resource type="LabelSettings" id="LabelSettings_c5fm1"]
+font_size = 64
+font_color = Color(0.863433, 0.402031, 0.308234, 1)
+outline_size = 8
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 32
+shadow_color = Color(0.00139673, 0.00139673, 0.00139673, 0)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_etmht"]
+radius = 527.06
+
+[node name="Main" type="Node"]
+script = ExtResource("1_mtfga")
+slime_scene = ExtResource("3_ultmg")
+player_scene = ExtResource("3_kvypv")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(662, 353)
+scale = Vector2(1.5, 1.25)
+texture = ExtResource("2_nr6sa")
+
+[node name="Player" parent="." instance=ExtResource("3_kvypv")]
+position = Vector2(640, 360)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+scale = Vector2(0.942599, 1.06142)
+
+[node name="Mob_spawn_path" type="Path2D" parent="."]
+curve = SubResource("Curve2D_p1a8s")
+
+[node name="Mob_spawn_location" type="PathFollow2D" parent="Mob_spawn_path"]
+position = Vector2(-144, -96)
+
+[node name="Player_spawn" type="Marker2D" parent="."]
+position = Vector2(640, 360)
+
+[node name="Slime_timer" type="Timer" parent="."]
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="Score" type="Label" parent="HUD"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "0
+"
+label_settings = SubResource("LabelSettings_c5fm1")
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="HUD"]
+position = Vector2(996, 467)
+scale = Vector2(0.2, 0.2)
+texture_normal = ExtResource("7_fomfm")
+shape = SubResource("CircleShape2D_etmht")
+metadata/_edit_group_ = true
+
+[node name="Joystick" parent="HUD" instance=ExtResource("8_e1ji3")]
+position = Vector2(191, 543)
+scale = Vector2(2, 2)
+
+[connection signal="timeout" from="Slime_timer" to="." method="_on_slime_timer_timeout"]
+[connection signal="pressed" from="HUD/TouchScreenButton" to="Player" method="_on_touch_screen_button_pressed"]

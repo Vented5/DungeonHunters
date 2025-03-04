@@ -1,15 +1,16 @@
-[gd_scene load_steps=10 format=3 uid="uid://cht2ngyuph4ad"]
+[gd_scene load_steps=11 format=3 uid="uid://cht2ngyuph4ad"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_mtfga"]
 [ext_resource type="Texture2D" uid="uid://ri4h47dj2eer" path="res://art/background.jpg" id="2_nr6sa"]
 [ext_resource type="PackedScene" uid="uid://qiw2xgc314o0" path="res://player/player.tscn" id="3_kvypv"]
 [ext_resource type="PackedScene" uid="uid://dq1vsa5w8gn5o" path="res://slime/slime.tscn" id="3_ultmg"]
 [ext_resource type="Texture2D" uid="uid://cw543fi4x2eta" path="res://ui/battle.svg" id="7_fomfm"]
+[ext_resource type="PackedScene" uid="uid://cqy2kaeptmwos" path="res://health_bar.tscn" id="7_lace4"]
 [ext_resource type="PackedScene" uid="uid://cn0oait4m0s65" path="res://ui/joystick/joystick.tscn" id="8_e1ji3"]
 
 [sub_resource type="Curve2D" id="Curve2D_p1a8s"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -144, -96, 0, 0, 0, 0, 1472, -96, 0, 0, 0, 0, 1472, 800, 0, 0, 0, 0, -144, 800, 0, 0, 0, 0, -144, -96)
+"points": PackedVector2Array(0, 0, 0, 0, -142.826, -101.277, 0, 0, 0, 0, 2133.89, -96.5864, 0, 0, 0, 0, 2138.59, 1165.32, 0, 0, 0, 0, -147.521, 1165.32, 0, 0, 0, 0, -142.826, -101.277)
 }
 point_count = 5
 
@@ -31,7 +32,7 @@ player_scene = ExtResource("3_kvypv")
 
 [node name="Background" type="Sprite2D" parent="."]
 position = Vector2(662, 353)
-scale = Vector2(1.5, 1.25)
+scale = Vector2(3.6, 3)
 texture = ExtResource("2_nr6sa")
 
 [node name="Player" parent="." instance=ExtResource("3_kvypv")]
@@ -41,10 +42,13 @@ position = Vector2(640, 360)
 scale = Vector2(0.942599, 1.06142)
 
 [node name="Mob_spawn_path" type="Path2D" parent="."]
+position = Vector2(-1036.59, -563.286)
+scale = Vector2(1.70421, 1.70536)
 curve = SubResource("Curve2D_p1a8s")
 
 [node name="Mob_spawn_location" type="PathFollow2D" parent="Mob_spawn_path"]
-position = Vector2(-144, -96)
+position = Vector2(-142.826, -101.277)
+rotation = 0.00206024
 
 [node name="Player_spawn" type="Marker2D" parent="."]
 position = Vector2(640, 360)
@@ -70,11 +74,24 @@ position = Vector2(996, 467)
 scale = Vector2(0.2, 0.2)
 texture_normal = ExtResource("7_fomfm")
 shape = SubResource("CircleShape2D_etmht")
+action = "attack"
 metadata/_edit_group_ = true
 
 [node name="Joystick" parent="HUD" instance=ExtResource("8_e1ji3")]
 position = Vector2(191, 543)
 scale = Vector2(2, 2)
 
+[node name="HealthBar" parent="HUD" instance=ExtResource("7_lace4")]
+offset_left = 48.0
+offset_top = 64.0
+offset_right = -832.0
+offset_bottom = -644.0
+
+[node name="Label" type="Label" parent="HUD"]
+offset_left = 48.0
+offset_top = 24.0
+offset_right = 171.0
+offset_bottom = 47.0
+text = "< Player  name>"
+
 [connection signal="timeout" from="Slime_timer" to="." method="_on_slime_timer_timeout"]
-[connection signal="pressed" from="HUD/TouchScreenButton" to="Player" method="_on_touch_screen_button_pressed"]

@@ -1,18 +1,19 @@
 [gd_scene load_steps=4 format=3 uid="uid://qiw2xgc314o0"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_lrge0"]
-[ext_resource type="Texture2D" uid="uid://dm7ftww5fc7ew" path="res://art/dogo (2).png" id="1_yipfr"]
+[ext_resource type="Texture2D" uid="uid://btla6w4q5qyeo" path="res://art/cat.png" id="2_7d6wy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3hfim"]
 size = Vector2(124, 149)
 
 [node name="Player" type="CharacterBody2D"]
+collision_mask = 2
 script = ExtResource("1_lrge0")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_yipfr")
+texture = ExtResource("2_7d6wy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, -0.5)
 shape = SubResource("RectangleShape2D_3hfim")
-disabled = true
+debug_color = Color(0.209424, 0.627019, 0.376233, 0.42)

@@ -2,10 +2,14 @@ extends CharacterBody2D
 
 signal slime_died
 
-var speed = 100
+var health = 10 : set = _set_health
+var speed = 0
 var direction
+@onready var healthbar = $HealthBar
 
 func _ready():
+	health = 2
+	healthbar.init_health(health)
 	$AnimatedSprite2D.play("move")
 
 
@@ -24,9 +28,17 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 	
 	print("¡Eeeee, contacto!")
 	# Desactiva el nodo para que no interactúe con la física inmediatamente
-	self.set_process(false)  # Desactiva el proceso para evitar que se actualice
-	self.set_physics_process(false)  # Desactiva el procesamiento físico
+	#self.set_process(false)  # Desactiva el proceso para evitar que se actualice
+	#self.set_physics_process(false)  # Desactiva el procesamiento físico
 	# Luego espera un frame para asegurarse de que no haya más procesos pendientes
 	await get_tree().create_timer(0.0).timeout
-	queue_free()  # Elimina el enemigo
-	emit_signal("slime_died")
+	health -= 1  # Elimina el enemigo
+
+func _set_health(value):
+	#self._set_health(value)
+	health = value
+	if health <= 0:
+		queue_free()
+		emit_signal("slime_died")
+	
+	healthbar.health = health

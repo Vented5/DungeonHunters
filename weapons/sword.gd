@@ -9,24 +9,23 @@ var final_angle
 var player
 
 func _ready() -> void:
-	self.collision_mask &= ~2
+	self.collision_layer = 0
 	player = self.get_parent()
 
 func _process(delta):
 	direction = player.direction
 	
 	if Input.is_action_just_pressed("attack"):
+		self.collision_layer = 3
 		handle_attack()
+	if Input.is_action_just_released("attack"):
+		self.collision_layer = 0
 
 func handle_attack ():
-	self.collision_mask |= 2 # Reactiva la mascara de colosion en la posision binaria 2
-	print("Máscara modificada:", self.collision_mask)
 	attack_tween = create_tween()
 	attack_tween.tween_method(attack, 0.0, 1.0, attack_duration)
 	await attack_tween.finished
-	self.collision_mask &= ~2
-	print("Máscara modificada:", self.collision_mask)
-		
+	
 	position = Vector2.ZERO
 	if direction.angle() >= (PI/2):
 		self.rotation = deg_to_rad(0)

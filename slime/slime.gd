@@ -3,7 +3,7 @@ extends CharacterBody2D
 signal slime_died
 
 var health = 10 : set = _set_health
-var speed = 0
+var speed = 100
 var direction
 @onready var healthbar = $HealthBar
 
@@ -11,11 +11,13 @@ func _ready():
 	health = 2
 	healthbar.init_health(health)
 	$AnimatedSprite2D.play("move")
-
+	direction = randf()
 
 func _process(delta):
 	var player = get_parent().get_node("Player")
-	direction = get_angle_to(player.position)
+	if player:
+		direction = get_angle_to(player.position)
+	
 	velocity = Vector2(speed, 0.0).rotated(direction) 
 	move_and_slide()
 
@@ -38,6 +40,7 @@ func _set_health(value):
 	#self._set_health(value)
 	health = value
 	if health <= 0:
+		self.collision_layer = 0
 		queue_free()
 		emit_signal("slime_died")
 	

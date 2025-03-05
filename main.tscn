@@ -37,6 +37,8 @@ texture = ExtResource("2_nr6sa")
 
 [node name="Player" parent="." instance=ExtResource("3_kvypv")]
 position = Vector2(640, 360)
+health = 12
+speed = 300
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 scale = Vector2(0.942599, 1.06142)
@@ -94,4 +96,6 @@ offset_right = 171.0
 offset_bottom = 47.0
 text = "< Player  name>"
 
+[connection signal="die" from="Player" to="." method="_on_player_die"]
+[connection signal="hit" from="Player" to="." method="_on_player_hit"]
 [connection signal="timeout" from="Slime_timer" to="." method="_on_slime_timer_timeout"]

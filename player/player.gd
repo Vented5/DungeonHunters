@@ -1,8 +1,11 @@
 extends CharacterBody2D
 @onready var joystick
 
-var speed = 300
+@export var health = 12
+@export var speed = 300
 var direction = Vector2.ZERO
+signal hit
+signal die
 
 func _ready():
 	#weapon = weapon_scene.instantiate()
@@ -50,3 +53,14 @@ func _process(delta: float):
 	elif direction.x < 0:  # Izquierda
 		$Sprite2D.flip_h = false
 		#weapon.scale.x = -abs(weapon.scale.x)
+
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	health -= 1
+	hit.emit()
+	if health <= 0:
+		queue_free()
+		#self.visible = false
+		#$Area2D.collision_mask = 0
+		die.emit()
+	print("Slime contact")

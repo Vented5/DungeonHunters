@@ -6,10 +6,13 @@ var score: int
 
 func _ready():	
 	$Slime_timer.start()
-
+	$HUD/HealthBar.init_health($Player.health)
 
 func new_game():
 	score = 0
+
+func game_over():
+	pass
 
 func _on_slime_timer_timeout():
 	var slime = slime_scene.instantiate()
@@ -22,3 +25,10 @@ func _on_slime_timer_timeout():
 func _on_slime_died():
 	score += 100
 	$HUD/Score.text = str(score)
+
+
+func _on_player_hit() -> void:
+	$HUD/HealthBar.health = $Player.health
+
+func _on_player_die() -> void:
+	$Slime_timer.stop()

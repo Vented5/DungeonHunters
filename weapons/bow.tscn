@@ -8,3 +8,5 @@ script = ExtResource("2_lgnmc")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_mkiec")
+
+[node name="Marker2D" type="Marker2D" parent="."]

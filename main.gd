@@ -12,7 +12,8 @@ func new_game():
 	score = 0
 
 func game_over():
-	pass
+	print("Fin del juego")
+	$Game_over.show()
 
 func _on_slime_timer_timeout():
 	var slime = slime_scene.instantiate()
@@ -32,3 +33,4 @@ func _on_player_hit() -> void:
 
 func _on_player_die() -> void:
 	$Slime_timer.stop()
+	game_over()

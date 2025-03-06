@@ -14,6 +14,7 @@ func _process(delta: float) -> void:
 
 func shoot():
 	var arrow = arrow_scene.instantiate()
+	arrow.transform = $Marker2D.global_transform
 	arrow.rotation = player.direction.angle()
-	add_child(arrow)
-	print("Arrow shooted")
+	get_parent().get_parent().add_child(arrow)
+	print("Arrow shooted, parent:", get_parent().get_parent())

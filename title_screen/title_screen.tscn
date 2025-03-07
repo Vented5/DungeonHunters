@@ -1,9 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://fybtkxym01xo"]
+[gd_scene load_steps=5 format=3 uid="uid://fybtkxym01xo"]
 
 [ext_resource type="Script" path="res://title_screen/title_screen.gd" id="1_qc3g2"]
 [ext_resource type="Texture2D" uid="uid://bk5we4480gkw2" path="res://wawa.jpg" id="2_hw1jq"]
 
-[node name="Menu" type="Node"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rjkp8"]
+bg_color = Color(0.322308, 0.425675, 0.14066, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bf30l"]
+bg_color = Color(0.363431, 0.619557, 0.16324, 1)
+
+[node name="Title_screen" type="Node"]
 script = ExtResource("1_qc3g2")
 
 [node name="Background" type="TextureRect" parent="."]
@@ -15,22 +21,6 @@ grow_vertical = 2
 texture = ExtResource("2_hw1jq")
 expand_mode = 2
 flip_h = true
-
-[node name="ColorRect" type="ColorRect" parent="."]
-visible = false
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 152.0
-offset_top = 360.0
-offset_right = 198.0
-offset_bottom = 400.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(10.5713, -17.9905)
-color = Color(0.185172, 0.17374, 0.170411, 0.572549)
 
 [node name="BoxContainer" type="VBoxContainer" parent="."]
 anchors_preset = 8
@@ -72,5 +62,70 @@ offset_bottom = 144.0
 theme_override_font_sizes/font_size = 64
 text = "DUNGEON HUNTERS"
 horizontal_alignment = 1
+
+[node name="Welcome" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="Welcome"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -180.0
+offset_top = -90.0
+offset_right = 180.0
+offset_bottom = 90.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.172549, 0.164706, 0.176471, 0.615686)
+
+[node name="LineEdit" type="LineEdit" parent="Welcome"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -132.0
+offset_top = 2.5
+offset_right = -4.0
+offset_bottom = 55.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 32
+placeholder_text = "####"
+alignment = 1
+
+[node name="Label" type="Label" parent="Welcome"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -114.5
+offset_top = -62.5
+offset_right = 114.5
+offset_bottom = -17.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 32
+text = "Write your tag:
+"
+
+[node name="Button" type="Button" parent="Welcome"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 20.0
+offset_top = 6.0
+offset_right = 140.0
+offset_bottom = 54.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 32
+theme_override_styles/hover = SubResource("StyleBoxFlat_rjkp8")
+theme_override_styles/normal = SubResource("StyleBoxFlat_bf30l")
+text = ">>"
 
 [connection signal="pressed" from="BoxContainer/Start" to="." method="_on_button_pressed"]

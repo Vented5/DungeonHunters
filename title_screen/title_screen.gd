@@ -29,6 +29,6 @@ func _on_join_pressed():
 
 func _on_peer_connected(id: int = 1):
 	var player_instance = player_scene.instantiate()
-	#player_instance.position = Vector2(100, 0)
+	player_instance.name = str(id)
 	add_child(player_instance, true)
 	print("Jugador spawneado en:", player_instance.position)

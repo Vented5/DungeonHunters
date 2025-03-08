@@ -7,6 +7,9 @@ var direction = Vector2.ZERO
 signal hit
 signal die
 
+func _enter_tree() -> void:
+	set_multiplayer_authority(name.to_int())
+
 func _ready():
 	#weapon = weapon_scene.instantiate()
 	joystick = $"../HUD/Joystick"
@@ -20,6 +23,7 @@ func _ready():
 	#add_child(weapon)
 
 func _process(delta: float): 
+	if !is_multiplayer_authority(): return
 	# --------------------------- Key Movement ------------------------------
 	var vel = Vector2.ZERO 
 	if Input.is_action_pressed("move_right"):

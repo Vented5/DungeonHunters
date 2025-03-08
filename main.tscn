@@ -2,11 +2,11 @@
 
 [ext_resource type="Script" path="res://main.gd" id="1_mtfga"]
 [ext_resource type="Texture2D" uid="uid://ri4h47dj2eer" path="res://art/background.jpg" id="2_nr6sa"]
-[ext_resource type="PackedScene" uid="uid://qiw2xgc314o0" path="res://player/player.tscn" id="3_kvypv"]
 [ext_resource type="PackedScene" uid="uid://dq1vsa5w8gn5o" path="res://slime/slime.tscn" id="3_ultmg"]
 [ext_resource type="Texture2D" uid="uid://cw543fi4x2eta" path="res://ui/battle.svg" id="7_fomfm"]
 [ext_resource type="PackedScene" uid="uid://cqy2kaeptmwos" path="res://health_bar.tscn" id="7_lace4"]
 [ext_resource type="PackedScene" uid="uid://cn0oait4m0s65" path="res://ui/joystick/joystick.tscn" id="8_e1ji3"]
+[ext_resource type="PackedScene" uid="uid://b3ngex5kxxjgm" path="res://camera_2d.tscn" id="8_f05hp"]
 
 [sub_resource type="Curve2D" id="Curve2D_p1a8s"]
 _data = {
@@ -28,18 +28,11 @@ radius = 527.06
 [node name="Main" type="Node"]
 script = ExtResource("1_mtfga")
 slime_scene = ExtResource("3_ultmg")
-player_scene = ExtResource("3_kvypv")
 
 [node name="Background" type="Sprite2D" parent="."]
 position = Vector2(662, 353)
 scale = Vector2(3.6, 3)
 texture = ExtResource("2_nr6sa")
-
-[node name="Player" parent="." instance=ExtResource("3_kvypv")]
-position = Vector2(640, 360)
-
-[node name="Camera2D" type="Camera2D" parent="Player"]
-scale = Vector2(0.942599, 1.06142)
 
 [node name="Mob_spawn_path" type="Path2D" parent="."]
 position = Vector2(-1036.59, -563.286)
@@ -122,6 +115,7 @@ theme_override_colors/font_shadow_color = Color(0.12103, 0.12103, 0.12103, 0.572
 theme_override_font_sizes/font_size = 72
 text = "YOU DIED"
 
-[connection signal="die" from="Player" to="." method="_on_player_die"]
-[connection signal="hit" from="Player" to="." method="_on_player_hit"]
+[node name="Camera2D" parent="." instance=ExtResource("8_f05hp")]
+position = Vector2(640, 360)
+
 [connection signal="timeout" from="Slime_timer" to="." method="_on_slime_timer_timeout"]

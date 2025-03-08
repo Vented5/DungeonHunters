@@ -2,11 +2,10 @@ extends Node
 
 var score: int
 @export var slime_scene: PackedScene
-@export var player_scene: PackedScene
 
 func _ready():	
 	$Slime_timer.start()
-	$HUD/HealthBar.init_health($Player.health)
+	#$HUD/HealthBar.init_health($Player.health)
 
 func new_game():
 	score = 0
@@ -14,6 +13,9 @@ func new_game():
 func game_over():
 	print("Fin del juego")
 	$Game_over.show()
+	Global.save_highscore(5000)
+	print("juego guardado")
+	Global.load_game()
 
 func _on_slime_timer_timeout():
 	var slime = slime_scene.instantiate()

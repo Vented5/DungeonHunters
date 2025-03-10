@@ -9,6 +9,7 @@ signal die
 
 func _enter_tree() -> void:
 	set_multiplayer_authority(name.to_int())
+	print("Multiplayer authority ", name)
 
 func _ready():
 	#weapon = weapon_scene.instantiate()
@@ -44,17 +45,17 @@ func _process(delta: float):
 	position += vel * delta
 	
 	# ------------------------- Joystick movement -------------------------------
-	#direction = joystick.pos_vector
-	#if direction:
-	#	velocity = direction * speed
-	#else:
-	#	velocity = Vector2.ZERO
-	#move_and_slide()
-	#if direction.x > 0:  # Derecha
-	#	$Sprite2D.flip_h = true
-	#elif direction.x < 0:  # Izquierda
-	#	$Sprite2D.flip_h = false
-	
+	direction = joystick.pos_vector
+	if direction:
+		velocity = direction * speed
+	else:
+		velocity = Vector2.ZERO
+	move_and_slide()
+	if direction.x > 0:  # Derecha
+		$Sprite2D.flip_h = true
+	elif direction.x < 0:  # Izquierda
+		$Sprite2D.flip_h = false
+
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	health -= 1

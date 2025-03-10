@@ -4,6 +4,9 @@ var character_texture_path = "res://art/cat.png"
 var weapon_scene_path = "res://weapons/sword.tscn"
 
 var save_path = "user://save_game.dat"
+var player:int
+
+var game_mode 
 
 var game_data : Dictionary = {
 	"tag": "zzzz",

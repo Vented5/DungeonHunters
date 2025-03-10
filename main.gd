@@ -3,8 +3,15 @@ extends Node
 var score: int
 @export var slime_scene: PackedScene
 
-func _ready():	
-	$Slime_timer.start()
+func _ready():
+	if Global.game_mode == 1:
+		MultiplayerManager.create_server(3500, 2)
+		$Slime_timer.start()
+	elif Global.game_mode == 2:
+		MultiplayerManager.create_client("localhost", 3500)
+	else: 
+		MultiplayerManager.spawn_player()
+	
 	#$HUD/HealthBar.init_health($Player.health)
 
 func new_game():

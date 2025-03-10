@@ -118,4 +118,8 @@ text = "YOU DIED"
 [node name="Camera2D" parent="." instance=ExtResource("8_f05hp")]
 position = Vector2(640, 360)
 
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("res://player/player.tscn", "res://slime/slime.tscn")
+spawn_path = NodePath("..")
+
 [connection signal="timeout" from="Slime_timer" to="." method="_on_slime_timer_timeout"]

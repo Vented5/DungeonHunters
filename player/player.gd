@@ -9,13 +9,13 @@ signal die
 
 func _enter_tree() -> void:
 	set_multiplayer_authority(name.to_int())
-	print("Multiplayer authority ", name)
+	print("New player added: ", name)
 
 func _ready():
 	#weapon = weapon_scene.instantiate()
 	joystick = $"../HUD/Joystick"
 	
-	print(Global.weapon_scene_path)
+	#print(Global.weapon_scene_path)
 	$Sprite2D.texture = load(Global.character_texture_path) 
 	var weapon_scene: PackedScene = load(Global.weapon_scene_path)
 	var weapon = weapon_scene.instantiate()

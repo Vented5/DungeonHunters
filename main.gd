@@ -2,20 +2,29 @@ extends Node
 
 var score: int
 @export var slime_scene: PackedScene
+var player
 
 func _ready():
 	if Global.game_mode == 1:
 		MultiplayerManager.create_server(3500, 2)
-		$Slime_timer.start()
+		MultiplayerManager.spawn_player()
+		new_game()
 	elif Global.game_mode == 2:
 		MultiplayerManager.create_client("localhost", 3500)
 	else: 
 		MultiplayerManager.spawn_player()
+		new_game()
+	#print_tree()
+	print("El jugador es: ", Global.player)
+		#$HUD/HealthBar.init_health($Player.health)
 	
-	#$HUD/HealthBar.init_health($Player.health)
+	player = get_node("./" + str(Global.player))
+	print("El nodo player es: ", player)
+	player.add_child(Camera2D.new())
 
 func new_game():
 	score = 0
+	$Slime_timer.start()
 
 func game_over():
 	print("Fin del juego")

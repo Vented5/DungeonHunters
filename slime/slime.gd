@@ -6,6 +6,7 @@ var health = 10 : set = _set_health
 var speed = 100
 var direction
 @onready var healthbar = $HealthBar
+@onready var player = get_parent().get_node("Player")
 
 func _ready():
 	health = 2
@@ -13,10 +14,15 @@ func _ready():
 	$AnimatedSprite2D.play("move")
 	direction = randf()
 
+
 func _process(delta):
-	var player = get_parent().get_node("Player")
+	rpc("move")
 	if player:
 		direction = get_angle_to(player.position)
+
+@rpc
+func move():
+	
 	
 	velocity = Vector2(speed, 0.0).rotated(direction) 
 	move_and_slide()

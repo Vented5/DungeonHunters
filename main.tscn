@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cht2ngyuph4ad"]
+[gd_scene load_steps=10 format=3 uid="uid://cht2ngyuph4ad"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_mtfga"]
 [ext_resource type="Texture2D" uid="uid://ri4h47dj2eer" path="res://art/background.jpg" id="2_nr6sa"]
@@ -6,7 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://cw543fi4x2eta" path="res://ui/battle.svg" id="7_fomfm"]
 [ext_resource type="PackedScene" uid="uid://cqy2kaeptmwos" path="res://health_bar.tscn" id="7_lace4"]
 [ext_resource type="PackedScene" uid="uid://cn0oait4m0s65" path="res://ui/joystick/joystick.tscn" id="8_e1ji3"]
-[ext_resource type="PackedScene" uid="uid://b3ngex5kxxjgm" path="res://camera_2d.tscn" id="8_f05hp"]
 
 [sub_resource type="Curve2D" id="Curve2D_p1a8s"]
 _data = {
@@ -114,9 +113,6 @@ theme_override_colors/font_color = Color(0.819905, 0, 0.0972215, 1)
 theme_override_colors/font_shadow_color = Color(0.12103, 0.12103, 0.12103, 0.572549)
 theme_override_font_sizes/font_size = 72
 text = "YOU DIED"
-
-[node name="Camera2D" parent="." instance=ExtResource("8_f05hp")]
-position = Vector2(640, 360)
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
 _spawnable_scenes = PackedStringArray("res://player/player.tscn", "res://slime/slime.tscn")

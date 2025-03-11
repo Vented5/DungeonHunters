@@ -8,6 +8,11 @@ var weapons = ["sword", "bow"]
 var w_selected = 1
 
 func _ready():
+	if Global.game_mode == "Host":
+		MultiplayerManager.create_server(3500, 2)
+	elif Global.game_mode == "Client":
+		MultiplayerManager.create_client("localhost", 3500)
+	
 	load_c_texture()
 	load_w_texture()
 

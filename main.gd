@@ -2,25 +2,25 @@ extends Node
 
 var score: int
 @export var slime_scene: PackedScene
+var player_scene = load("res://player/player.tscn")
 var player
 
 func _ready():
-	if Global.game_mode == 1:
-		MultiplayerManager.create_server(3500, 2)
-		MultiplayerManager.spawn_player()
-		new_game()
-	elif Global.game_mode == 2:
-		MultiplayerManager.create_client("localhost", 3500)
-	else: 
-		MultiplayerManager.spawn_player()
-		new_game()
-	#print_tree()
-	print("El jugador es: ", Global.player)
-		#$HUD/HealthBar.init_health($Player.health)
+	print(Global.game_mode, " Players: ", Global.players)
+	
+	print(Global.game_mode, " Current: ", Global.player)
+	for i in Global.players:
+		spawn_player(i)
+	
+	new_game()
+	
+	#$HUD/HealthBar.init_health($Player.health)
 	
 	player = get_node("./" + str(Global.player))
-	print("El nodo player es: ", player)
-	player.add_child(Camera2D.new())
+
+	#player.add_child(Camera2D.new())
+	#if $"./1":
+	#	$"./1".add_child(Camera2D.new())
 
 func new_game():
 	score = 0
@@ -32,6 +32,11 @@ func game_over():
 	Global.save_highscore(5000)
 	print("juego guardado")
 	Global.load_game()
+
+func spawn_player(id) -> void:
+	var player_instance = player_scene.instantiate()
+	player_instance.name = str(id)
+	add_child(player_instance, true)
 
 func _on_slime_timer_timeout():
 	var slime = slime_scene.instantiate()

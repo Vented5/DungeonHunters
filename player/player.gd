@@ -9,8 +9,9 @@ signal die
 
 func _enter_tree() -> void:
 	set_multiplayer_authority(name.to_int())
-	print("New player added: ", name)
-
+	print(Global.game_mode, " New player added: ", name)
+	$Label.text = name
+	
 func _ready():
 	#weapon = weapon_scene.instantiate()
 	joystick = $"../HUD/Joystick"

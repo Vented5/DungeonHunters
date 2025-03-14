@@ -114,8 +114,4 @@ theme_override_colors/font_shadow_color = Color(0.12103, 0.12103, 0.12103, 0.572
 theme_override_font_sizes/font_size = 72
 text = "YOU DIED"
 
-[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
-_spawnable_scenes = PackedStringArray("res://player/player.tscn", "res://slime/slime.tscn")
-spawn_path = NodePath("..")
-
 [connection signal="timeout" from="Slime_timer" to="." method="_on_slime_timer_timeout"]

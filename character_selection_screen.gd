@@ -9,9 +9,9 @@ var w_selected = 1
 
 func _ready():
 	if Global.game_mode == "Host":
-		MultiplayerManager.create_server(3500, 2)
+		Multiplayer.create_server()
 	elif Global.game_mode == "Client":
-		MultiplayerManager.create_client("localhost", 3500)
+		Multiplayer.create_client()
 	
 	load_c_texture()
 	load_w_texture()

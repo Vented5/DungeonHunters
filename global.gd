@@ -4,8 +4,6 @@ var character_texture_path = "res://art/cat.png"
 var weapon_scene_path = "res://weapons/sword.tscn"
 
 var save_path = "user://save_game.dat"
-var players = [1]
-var player:int = 1
 
 var game_mode 
 

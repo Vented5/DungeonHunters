@@ -8,11 +8,6 @@ var weapons = ["sword", "bow"]
 var w_selected = 1
 
 func _ready():
-	if Global.game_mode == "Host":
-		Multiplayer.create_server()
-	elif Global.game_mode == "Client":
-		Multiplayer.create_client()
-	
 	load_c_texture()
 	load_w_texture()
 
@@ -43,7 +38,8 @@ func _on_prev_character_pressed() -> void:
 func _on_start_pressed() -> void:
 	Global.character_texture_path=(c_folder + characters[c_selected] + ".png")
 	Global.weapon_scene_path=(w_folder + weapons[w_selected] + ".tscn")
-	get_tree().change_scene_to_file("res://main.tscn")
+	Multiplayer.player_loaded.rpc_id(1)
+	#get_tree().change_scene_to_file("res://main.tscn")
 	
 
 func _on_next_weapon_pressed() -> void:

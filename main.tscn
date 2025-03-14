@@ -46,6 +46,7 @@ rotation = 0.00206024
 position = Vector2(640, 360)
 
 [node name="Slime_timer" type="Timer" parent="."]
+wait_time = 2.0
 
 [node name="HUD" type="CanvasLayer" parent="."]
 

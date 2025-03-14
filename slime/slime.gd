@@ -8,30 +8,32 @@ var direction
 @onready var healthbar = $HealthBar
 @onready var player = get_parent().get_node("Player")
 
+@rpc("authority")
 func _ready():
 	health = 2
 	healthbar.init_health(health)
 	$AnimatedSprite2D.play("move")
 	direction = randf()
 
-
+@rpc("authority")
 func _process(delta):
 	rpc("move")
 	if player:
 		direction = get_angle_to(player.position)
 
-@rpc
+@rpc("call_remote")
 func move():
-	
-	
 	velocity = Vector2(speed, 0.0).rotated(direction) 
-	move_and_slide()
+	#move_and_slide()
 
+@rpc("authority")
 func _on_area_2d_body_entered(body: Node2D):
 	# ------ Movi todo a un area2d -----------------
 	# No funciona si el arma es un objeto, por alguna razon este se queda tiezo en el mapa
 	pass
-	
+
+
+@rpc("authority")
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	
 	print("¡Eeeee, contacto!")
@@ -42,6 +44,8 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 	await get_tree().create_timer(0.0).timeout
 	health -= 1  # Elimina el enemigo
 
+
+@rpc("authority")
 func _set_health(value):
 	#self._set_health(value)
 	health = value

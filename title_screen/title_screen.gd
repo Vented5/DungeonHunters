@@ -14,9 +14,13 @@ func _on_button_pressed() -> void:
 	#print("Scen changed to main")
 
 func _on_host_pressed() -> void:
+	Multiplayer.create_server()
 	get_tree().change_scene_to_file("res://character_selection_screen.tscn")
 	Global.game_mode = "Host" # Host
+	
 
 func _on_join_pressed():
+	Multiplayer.create_client()
 	get_tree().change_scene_to_file("res://character_selection_screen.tscn")
 	Global.game_mode = "Client" # Join
+	

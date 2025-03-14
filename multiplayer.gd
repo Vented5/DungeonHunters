@@ -50,17 +50,20 @@ func _register_player(new_player_info):
 
 # When the server decides to start the game from a UI scene,
 # do Lobby.load_game.rpc(filepath)
-@rpc("call_local", "reliable")
+@rpc("reliable")
 func load_game(game_scene_path):
-	get_tree().change_scene_to_file("res://main.tscn")
+	get_tree().change_scene_to_file(game_scene_path)
+	rpc("load_game", game_scene_path)
 
+@rpc("any_peer", "call_local", "reliable")
 func player_loaded():
 	if multiplayer.is_server():
 		players_loaded += 1
+		print(Global.game_mode, " - loaded: ", players_loaded)
 		if players_loaded == players.size():
-			$".".game_start()
+			load_game("res://main.tscn")
 			players_loaded = 0
-	print(Global.game_mode, " - loaded: ", players_loaded)
+	
 
 func _on_player_disconnected(id):
 	players.erase(id)

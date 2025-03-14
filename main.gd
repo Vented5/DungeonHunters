@@ -4,9 +4,10 @@ var score: int
 @export var slime_scene: PackedScene
 var player_scene = load("res://player/player.tscn")
 var player
+var slime_count = 0
 
 func _ready():
-	Multiplayer.player_loaded.rpc_id(1)
+	game_start()
 	#$HUD/HealthBar.init_health($Player.health)
 	
 	player = get_node("./" + str(Multiplayer.player))
@@ -35,23 +36,35 @@ func spawn_player(peer_id: int):
 	var player_instance = player_scene.instantiate()
 	player_instance.name = str(peer_id)
 	player_instance.position = Vector2.ZERO
+	if multiplayer.get_unique_id() == peer_id:
+		player_instance.add_child(Camera2D.new())
 	add_child(player_instance)
+	$HUD/Label.text = str(multiplayer.get_unique_id())
 	rpc_id(peer_id, "initialize_player", player_instance.position, "reliable")
 	print(Global.game_mode, "Jugador ", peer_id,  " spawned at: ", player_instance. position)
-
+	
 @rpc("call_remote")
 func initialize_player(start_position):
 	var player_instance = player_scene.instantiate()
 	player_instance.position = start_position
 	add_child(player_instance)
 
+@rpc("authority")
 func _on_slime_timer_timeout():
-	var slime = slime_scene.instantiate()
 	var mob_spawn = $Mob_spawn_path/Mob_spawn_location
 	mob_spawn.progress_ratio = randf_range(0.0, 1.0)
-	slime.position = mob_spawn.position
+	var pos = mob_spawn.position
+	rpc("_spawn_slime", pos)
+
+@rpc("any_peer", "reliable")
+func _spawn_slime(pos):
+	var slime = slime_scene.instantiate()
+	slime.set_position(pos)
 	add_child(slime)
-	slime.connect("slime_died", _on_slime_died, 0)
+	#slime.connect("slime_died", _on_slime_died, 0)
+	slime_count += 1
+	print(Global.game_mode, " slime spowned, at: ", pos, " slime count: ", slime_count)
+
 
 func _on_slime_died():
 	score += 100

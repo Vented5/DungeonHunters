@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dq1vsa5w8gn5o"]
+[gd_scene load_steps=11 format=3 uid="uid://dq1vsa5w8gn5o"]
 
 [ext_resource type="Script" path="res://slime/slime.gd" id="1_a1gr5"]
 [ext_resource type="Texture2D" uid="uid://cweghpj2grbqa" path="res://slime/sprites/1.png" id="1_hppst"]
@@ -53,11 +53,6 @@ bg_color = Color(0.946077, 0.37846, 0.502969, 1)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xiy3v"]
 size = Vector2(13.8318, 14.7751)
 
-[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_61y85"]
-properties/0/path = NodePath(".:position")
-properties/0/spawn = true
-properties/0/replication_mode = 1
-
 [node name="Slime" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 2
@@ -95,9 +90,6 @@ position = Vector2(-1, 1.90735e-06)
 scale = Vector2(7.13335, 6.66891)
 shape = SubResource("RectangleShape2D_xiy3v")
 debug_color = Color(0.983669, 0, 0.350869, 0.42)
-
-[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
-replication_config = SubResource("SceneReplicationConfig_61y85")
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

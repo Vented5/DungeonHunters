@@ -10,6 +10,7 @@ func _ready() -> void:
 	join_btn.pressed.connect(_on_join_pressed)
 
 func _on_button_pressed() -> void:
+	Multiplayer.create_server()
 	get_tree().change_scene_to_file("res://character_selection_screen.tscn")
 	#print("Scen changed to main")
 

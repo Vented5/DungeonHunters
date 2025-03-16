@@ -38,9 +38,10 @@ func _on_prev_character_pressed() -> void:
 func _on_start_pressed() -> void:
 	Global.character_texture_path=(c_folder + characters[c_selected] + ".png")
 	Global.weapon_scene_path=(w_folder + weapons[w_selected] + ".tscn")
-	Multiplayer.player_loaded.rpc_id(1)
-	#get_tree().change_scene_to_file("res://main.tscn")
 	
+	Multiplayer.set_player_info.rpc("weapon", Global.weapon_scene_path)
+	Multiplayer.set_player_info.rpc("skin", Global.character_texture_path)
+	Multiplayer.player_loaded.rpc(multiplayer.get_unique_id())
 
 func _on_next_weapon_pressed() -> void:
 	if w_selected == weapons.size() -1:

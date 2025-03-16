@@ -91,5 +91,15 @@ scale = Vector2(7.13335, 6.66891)
 shape = SubResource("RectangleShape2D_xiy3v")
 debug_color = Color(0.983669, 0, 0.350869, 0.42)
 
+[node name="Label" type="Label" parent="."]
+offset_left = -23.0
+offset_top = -125.0
+offset_right = 23.0
+offset_bottom = -97.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_font_sizes/font_size = 20
+text = "2000"
+
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

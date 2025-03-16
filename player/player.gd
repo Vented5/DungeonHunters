@@ -9,20 +9,16 @@ signal die
 
 func _enter_tree() -> void:
 	set_multiplayer_authority(name.to_int())
-	print(Global.game_mode, " New player added: ", name)
+	print(Global.game_mode, " New player created: ", name)
 	$Label.text = name
-	
+
 func _ready():
-	#weapon = weapon_scene.instantiate()
 	joystick = $"../HUD/Joystick"
 	
-	#print(Global.weapon_scene_path)
-	$Sprite2D.texture = load(Global.character_texture_path) 
-	var weapon_scene: PackedScene = load(Global.weapon_scene_path)
-	var weapon = weapon_scene.instantiate()
-	add_child(weapon)
-	#weapon.collision_layer = 0
-	#add_child(weapon)
+	#$Sprite2D.texture = load(Global.character_texture_path) 
+	
+	if name == str(multiplayer.get_unique_id()):
+		add_child(Camera2D.new())
 
 func _process(delta: float): 
 	if !is_multiplayer_authority(): return
@@ -57,8 +53,9 @@ func _process(delta: float):
 	elif direction.x < 0:  # Izquierda
 		$Sprite2D.flip_h = false
 
-
+@rpc("authority")
 func _on_area_2d_body_entered(body: Node2D) -> void:
+	if !is_multiplayer_authority(): return
 	health -= 1
 	hit.emit()
 	if health <= 0:
@@ -66,4 +63,5 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		#self.visible = false
 		#$Area2D.collision_mask = 0
 		die.emit()
-	print("Slime contact")
+		print("Player ", multiplayer.get_unique_id(), " has died")
+	print(Global.game_mode, " Slime contact, health: ", health)

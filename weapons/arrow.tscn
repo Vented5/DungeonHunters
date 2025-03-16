@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://dsgjmn1ustteg"]
+[gd_scene load_steps=5 format=3 uid="uid://dsgjmn1ustteg"]
 
 [ext_resource type="Texture2D" uid="uid://bvsrpuqc4d32w" path="res://weapons/Arrow.png" id="1_j6224"]
 [ext_resource type="Script" path="res://weapons/arrow.gd" id="1_psfnf"]
@@ -6,6 +6,11 @@
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_jcn4k"]
 a = Vector2(-72, 0)
 b = Vector2(88, 0)
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_lu0ji"]
+properties/0/path = NodePath("Sprite2D:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
 
 [node name="Arrow" type="Area2D"]
 collision_layer = 8
@@ -23,4 +28,8 @@ texture = ExtResource("1_j6224")
 shape = SubResource("SegmentShape2D_jcn4k")
 debug_color = Color(0.976661, 0, 0.410141, 0.42)
 
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_lu0ji")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

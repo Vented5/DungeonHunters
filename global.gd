@@ -5,7 +5,12 @@ var weapon_scene_path = "res://weapons/sword.tscn"
 
 var save_path = "user://save_game.dat"
 
-var game_mode 
+var game_mode = "single"
+
+func _ready():
+	if OS.has_feature("dedicated_server"):
+		print("Starting a dedicated server...")
+		Multiplayer.create_server()
 
 var game_data : Dictionary = {
 	"tag": "zzzz",

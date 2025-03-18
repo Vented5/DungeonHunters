@@ -44,8 +44,8 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_42rm0"]
-size = Vector2(20.3738, 18.847)
+[sub_resource type="CircleShape2D" id="CircleShape2D_jhmru"]
+radius = 7.71609
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h5hek"]
 bg_color = Color(0.946077, 0.37846, 0.502969, 1)
@@ -59,6 +59,7 @@ collision_mask = 2
 script = ExtResource("1_a1gr5")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.8, 0.8)
 sprite_frames = SubResource("SpriteFrames_p86m6")
 animation = &"move"
 frame_progress = 0.926602
@@ -69,9 +70,8 @@ collision_layer = 2
 collision_mask = 13
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(-1.33326, 3.84454)
 scale = Vector2(7.13335, 6.66891)
-shape = SubResource("RectangleShape2D_42rm0")
+shape = SubResource("CircleShape2D_jhmru")
 
 [node name="HealthBar" parent="." instance=ExtResource("6_701h3")]
 anchors_preset = 8
@@ -90,6 +90,16 @@ position = Vector2(-1, 1.90735e-06)
 scale = Vector2(7.13335, 6.66891)
 shape = SubResource("RectangleShape2D_xiy3v")
 debug_color = Color(0.983669, 0, 0.350869, 0.42)
+
+[node name="Label" type="Label" parent="."]
+offset_left = -23.0
+offset_top = -125.0
+offset_right = 23.0
+offset_bottom = -97.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_font_sizes/font_size = 20
+text = "2000"
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

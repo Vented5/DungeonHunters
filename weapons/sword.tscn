@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dmqo0lbsrv8ql"]
+[gd_scene load_steps=8 format=3 uid="uid://dmqo0lbsrv8ql"]
 
 [ext_resource type="Texture2D" uid="uid://c4ye486auqowg" path="res://weapons/sword.png" id="1_71msh"]
 [ext_resource type="Script" path="res://weapons/sword.gd" id="2_48stx"]
@@ -68,6 +68,14 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h27is"]
 size = Vector2(161.961, 29.0415)
 
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_xd7r2"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 2
+properties/1/path = NodePath(".:rotation")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+
 [node name="Sword" type="Area2D"]
 collision_layer = 4
 collision_mask = 2
@@ -88,3 +96,6 @@ position = Vector2(-1.27404, 2.89757)
 rotation = -0.583738
 scale = Vector2(1.13603, -1.30444)
 shape = SubResource("RectangleShape2D_h27is")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_xd7r2")

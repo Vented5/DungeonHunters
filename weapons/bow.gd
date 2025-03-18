@@ -6,15 +6,17 @@ var player
 func _ready() -> void:
 	player = get_parent()
 
-func _process(delta: float) -> void:
+func _process(delta):
+	if !is_multiplayer_authority(): return
 	if Input.is_action_pressed("attack"):
 		$Sprite2D.rotation = player.direction.angle() - deg_to_rad(235)
-	if Input.is_action_just_released("attack"):
-		shoot()
+		
+	if Input.is_action_just_pressed("attack"): # This doesnt work if changed to _action_just_released
+		rpc("shoot", player.direction.angle())
 
-func shoot():
+@rpc("call_local", "unreliable")
+func shoot(angle):
 	var arrow = arrow_scene.instantiate()
+	$Marker2D.rotation = angle
 	arrow.transform = $Marker2D.global_transform
-	arrow.rotation = player.direction.angle()
 	get_parent().get_parent().add_child(arrow)
-	print("Arrow shooted, parent:", get_parent().get_parent())

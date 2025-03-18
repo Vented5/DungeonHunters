@@ -13,14 +13,17 @@ func _ready() -> void:
 	player = self.get_parent()
 
 func _process(delta):
+	if !is_multiplayer_authority(): return
 	direction = player.direction
 	
 	if Input.is_action_just_pressed("attack"):
 		self.collision_layer = 3
 		handle_attack()
+		#rpc("handle_atack")
 	if Input.is_action_just_released("attack"):
 		self.collision_layer = 0
 
+@rpc("any_peer")
 func handle_attack ():
 	attack_tween = create_tween()
 	attack_tween.tween_method(attack, 0.0, 1.0, attack_duration)

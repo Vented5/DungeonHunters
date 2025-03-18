@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://cht2ngyuph4ad"]
+[gd_scene load_steps=11 format=3 uid="uid://cht2ngyuph4ad"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_mtfga"]
 [ext_resource type="Texture2D" uid="uid://ri4h47dj2eer" path="res://art/background.jpg" id="2_nr6sa"]
 [ext_resource type="PackedScene" uid="uid://dq1vsa5w8gn5o" path="res://slime/slime.tscn" id="3_ultmg"]
 [ext_resource type="Texture2D" uid="uid://cw543fi4x2eta" path="res://ui/battle.svg" id="7_fomfm"]
 [ext_resource type="PackedScene" uid="uid://cqy2kaeptmwos" path="res://health_bar.tscn" id="7_lace4"]
+[ext_resource type="Theme" uid="uid://duj6yf803sxe4" path="res://themes/idle.tres" id="7_r28ph"]
 [ext_resource type="PackedScene" uid="uid://cn0oait4m0s65" path="res://ui/joystick/joystick.tscn" id="8_e1ji3"]
 
 [sub_resource type="Curve2D" id="Curve2D_p1a8s"]
@@ -14,11 +15,11 @@ _data = {
 point_count = 5
 
 [sub_resource type="LabelSettings" id="LabelSettings_c5fm1"]
-font_size = 64
-font_color = Color(0.863433, 0.402031, 0.308234, 1)
-outline_size = 8
+font_size = 40
+font_color = Color(0.921142, 0.911028, 0.896647, 1)
+outline_size = 2
 outline_color = Color(0, 0, 0, 1)
-shadow_size = 32
+shadow_size = 16
 shadow_color = Color(0.00139673, 0.00139673, 0.00139673, 0)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_etmht"]
@@ -53,11 +54,12 @@ position = Vector2(640, 360)
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -20.0
-offset_right = 20.0
-offset_bottom = 23.0
+offset_left = -128.0
+offset_top = 24.0
+offset_right = 160.0
+offset_bottom = 96.0
 grow_horizontal = 2
-text = "0
+text = "Score:
 "
 label_settings = SubResource("LabelSettings_c5fm1")
 
@@ -86,6 +88,19 @@ offset_right = 171.0
 offset_bottom = 47.0
 text = "< Player  name>"
 
+[node name="notify" type="Label" parent="HUD"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -123.0
+offset_bottom = 23.0
+grow_horizontal = 0
+text = "< Player  name>"
+
+[node name="CenterContainer" type="CenterContainer" parent="HUD"]
+offset_right = 40.0
+offset_bottom = 40.0
+
 [node name="Game_over" type="CanvasLayer" parent="."]
 visible = false
 
@@ -103,15 +118,70 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -38.0
-offset_top = -11.5
-offset_right = 38.0
-offset_bottom = 11.5
+offset_left = -208.0
+offset_top = -232.0
+offset_right = 205.0
+offset_bottom = -133.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(0.819905, 0, 0.0972215, 1)
+theme_override_colors/font_color = Color(0.734731, 0.230897, 0.277868, 1)
 theme_override_colors/font_shadow_color = Color(0.12103, 0.12103, 0.12103, 0.572549)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 5
+theme_override_constants/shadow_offset_y = 4
+theme_override_constants/shadow_outline_size = 10
 theme_override_font_sizes/font_size = 72
-text = "YOU DIED"
+text = "GAME OVER"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Game_over"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -135.0
+offset_top = -8.0
+offset_right = 136.0
+offset_bottom = 148.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 12
+metadata/_edit_group_ = true
+
+[node name="New Game" type="Button" parent="Game_over/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("7_r28ph")
+disabled = true
+text = "New Game"
+
+[node name="Title Screen" type="Button" parent="Game_over/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("7_r28ph")
+text = "Go to the title screen
+"
+
+[node name="Exit game" type="Button" parent="Game_over/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("7_r28ph")
+text = "Exit game
+"
+
+[node name="Score" type="Label" parent="Game_over"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -56.0
+offset_top = -88.0
+offset_right = 51.0
+offset_bottom = -65.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 24
+text = "You scored! :  "
 
 [connection signal="timeout" from="Slime_timer" to="." method="_on_slime_timer_timeout"]
+[connection signal="pressed" from="Game_over/VBoxContainer/New Game" to="." method="_on_new_game_pressed"]
+[connection signal="pressed" from="Game_over/VBoxContainer/Title Screen" to="." method="_on_title_screen_pressed"]
+[connection signal="pressed" from="Game_over/VBoxContainer/Exit game" to="." method="_on_exit_game_pressed"]

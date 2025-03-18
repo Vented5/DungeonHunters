@@ -5,7 +5,7 @@ signal player_disconnected(peer_id)
 signal server_disconnected
 
 const PORT = 7769
-const DEFAULT_SERVER_IP = "192.168.0.2"#172.17.0.2"#"127.0.0.1"##"26.68.79.202"#
+const DEFAULT_SERVER_IP = "127.0.0.1"#"luckysw.xyz"#192.168.0.2"#172.17.0.2"###"26.68.79.202"#
 const MAX_CONECTIONS = 4
 
 var players = {}
@@ -22,12 +22,16 @@ func _ready():
 
 func create_server():
 	var peer = ENetMultiplayerPeer.new()
+	
 	var error = peer.create_server(PORT, MAX_CONECTIONS)
-	if error:
+	if error != OK:
+		print("Error al crear servidor: ", error)
 		return error
 	multiplayer.multiplayer_peer = peer
+	print("Servidor escuchando en: ", PORT)
 	#player_info.name = "server"
 	if !OS.has_feature("dedicated_server"):
+		player_info.name = Global.tag
 		players[1] = player_info
 		player_connected.emit(1, player_info)
 
@@ -42,7 +46,7 @@ func create_client(ip = ""):
 # When a peer connects, send them my player info.
 # This allows transfer of all desired data for each player, not only the unique ID.
 func _on_player_connected(id):
-	player_info.name = multiplayer.get_unique_id()
+	player_info.name = Global.tag
 	_register_player.rpc_id(id, player_info)
 	print(Global.game_mode, " Player connected: ", id)
 

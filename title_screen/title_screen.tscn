@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://fybtkxym01xo"]
+[gd_scene load_steps=6 format=3 uid="uid://fybtkxym01xo"]
 
 [ext_resource type="Script" path="res://title_screen/title_screen.gd" id="1_qc3g2"]
 [ext_resource type="Texture2D" uid="uid://bk5we4480gkw2" path="res://wawa.jpg" id="2_hw1jq"]
+[ext_resource type="Theme" uid="uid://bq3k02vai70n2" path="res://themes/button.tres" id="3_exc8f"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rjkp8"]
 bg_color = Color(0.322308, 0.425675, 0.14066, 1)
@@ -38,6 +39,7 @@ theme_override_constants/separation = 27
 
 [node name="Start" type="Button" parent="BoxContainer"]
 layout_mode = 2
+theme = ExtResource("3_exc8f")
 theme_override_font_sizes/font_size = 64
 text = "Start
 "
@@ -64,6 +66,7 @@ text = "DUNGEON HUNTERS"
 horizontal_alignment = 1
 
 [node name="Welcome" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="ColorRect" type="ColorRect" parent="Welcome"]
 anchors_preset = 8
@@ -92,8 +95,10 @@ offset_bottom = 55.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 32
+text = "LEIZER"
 placeholder_text = "####"
 alignment = 1
+max_length = 6
 
 [node name="Label" type="Label" parent="Welcome"]
 anchors_preset = 8
@@ -111,7 +116,7 @@ theme_override_font_sizes/font_size = 32
 text = "Write your tag:
 "
 
-[node name="Button" type="Button" parent="Welcome"]
+[node name="Tag_btn" type="Button" parent="Welcome"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -128,5 +133,67 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_rjkp8")
 theme_override_styles/normal = SubResource("StyleBoxFlat_bf30l")
 text = ">>"
 
-[connection signal="pressed" from="BoxContainer/Start" to="." method="_on_button_pressed"]
+[node name="Timer" type="Timer" parent="Welcome"]
+one_shot = true
+
+[node name="Server_list" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="Server_list"]
+custom_minimum_size = Vector2(540, 280)
+offset_left = 384.0
+offset_top = 232.0
+offset_right = 924.0
+offset_bottom = 512.0
+size_flags_vertical = 3
+color = Color(0.125911, 0.125911, 0.125911, 1)
+
+[node name="Label" type="Label" parent="Server_list/ColorRect"]
+layout_mode = 0
+offset_left = 224.0
+offset_top = 32.0
+offset_right = 352.0
+offset_bottom = 55.0
+text = "Available Games
+"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Server_list/ColorRect/Label"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -256.0
+offset_top = 36.5
+offset_right = 228.0
+offset_bottom = 209.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label2" type="Label" parent="Server_list/ColorRect/Label/VBoxContainer"]
+custom_minimum_size = Vector2(360, 0)
+layout_mode = 2
+text = "Dedicated Servers"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Server_list/ColorRect/Label/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label3" type="Label" parent="Server_list/ColorRect/Label/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(360, 0)
+layout_mode = 2
+text = "LomyCalipse"
+
+[node name="Button" type="Button" parent="Server_list/ColorRect/Label/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+theme = ExtResource("3_exc8f")
+text = "Join"
+
+[connection signal="pressed" from="BoxContainer/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="BoxContainer/Host" to="." method="_on_host_pressed"]
+[connection signal="pressed" from="Welcome/Tag_btn" to="." method="_on_tag_btn_pressed"]
+[connection signal="timeout" from="Welcome/Timer" to="." method="_on_timer_timeout"]
+[connection signal="pressed" from="Server_list/ColorRect/Label/VBoxContainer/HBoxContainer/Button" to="." method="_on_button_pressed"]

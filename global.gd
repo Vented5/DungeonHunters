@@ -4,8 +4,9 @@ var character_texture_path = "res://art/cat.png"
 var weapon_scene_path = "res://weapons/sword.tscn"
 
 var save_path = "user://save_game.dat"
+var game_mode = "server"
 
-var game_mode = "single"
+var tag = ""
 
 func _ready():
 	if OS.has_feature("dedicated_server"):

@@ -18,9 +18,11 @@ func _ready():
 
 func _process(delta):
 	if !multiplayer.is_server(): return
-	#var player = get_parent().get_node("1")
-	#direction = get_angle_to(player.position)
-	#rpc("move", direction)
+	var player = get_parent().get_node("1")
+	if player:
+		direction = get_angle_to(player.position)
+	
+	rpc("move", direction)
 
 @rpc("call_local", "any_peer", "unreliable")
 func move(dir):

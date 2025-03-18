@@ -4,8 +4,8 @@
 [ext_resource type="Script" path="res://weapons/arrow.gd" id="1_psfnf"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_jcn4k"]
-a = Vector2(-72, 0)
-b = Vector2(88, 0)
+a = Vector2(-96, 0)
+b = Vector2(40, 0)
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_lu0ji"]
 properties/0/path = NodePath("Sprite2D:position")
@@ -18,13 +18,15 @@ collision_mask = 2
 script = ExtResource("1_psfnf")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, 1)
+position = Vector2(1.5881, 1.04159)
 rotation = 1.59698
+scale = Vector2(0.8, 0.829)
 texture = ExtResource("1_j6224")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(32, 0)
 shape = SubResource("SegmentShape2D_jcn4k")
 debug_color = Color(0.976661, 0, 0.410141, 0.42)
 

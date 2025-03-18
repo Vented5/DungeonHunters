@@ -1,7 +1,7 @@
 extends CharacterBody2D
 @onready var joystick
 
-@export var health = 12
+@export var health = 4
 @export var speed = 300
 var direction = Vector2.ZERO
 signal hit

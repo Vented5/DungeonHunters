@@ -9,6 +9,7 @@ properties/0/spawn = true
 properties/0/replication_mode = 0
 
 [node name="Bow" type="Node2D"]
+scale = Vector2(0.8, 0.8)
 script = ExtResource("2_lgnmc")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

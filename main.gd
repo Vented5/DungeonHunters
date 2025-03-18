@@ -5,7 +5,7 @@ var score = 0 : set = set_score
 var player_scene = load("res://player/player.tscn")
 var player
 var slime_count = 1
-const MAX_SLIMES = 4
+const MAX_SLIMES = 20
 
 func _ready():
 	print(Global.game_mode, " players: ", Multiplayer.players)
@@ -31,7 +31,7 @@ func spawn_player(id):
 		$HUD/HealthBar.init_health(player_instance.health)
 		player_instance.hit.connect(_on_player_hit)
 		player_instance.die.connect(_on_player_die)
-		$HUD/Label.text = str(id)
+		$HUD/Label.text = str(Multiplayer.players[id].name)
 	
 	add_child(player_instance)
 	
@@ -55,31 +55,48 @@ func _spawn_slime(pos):
 	slime.get_node("Label").text = str(slime_count)
 	slime.set_position(pos)
 	slime.die.connect(_on_slime_died)
-	print("Slime spawned: ", slime)
+	#print("Slime spawned: ", slime)
 	add_child(slime)
 	slime_count += 1
 
 
 func _on_slime_died():
 	score += 100
+	slime_count -= 1
 	if !OS.has_feature("dedicated_server"):
-		$HUD/Score.text = str(score)
+		$HUD/Score.text = "Scire: " + str(score)
 
 
-func _on_player_hit() -> void:
+func _on_player_hit():
 	var aux = multiplayer.get_unique_id()
 	$HUD/HealthBar.health = get_node(str(aux)).health
 
-func _on_player_die() -> void:
-	$Slime_timer.stop()
+func _on_player_die():
 	game_over()
 
 func game_over():
 	print("Fin del juego")
+	$Game_over/Score.text += str(score)
 	$Game_over.show()
+	$Slime_timer.stop()
 	#Global.save_highscore(5000)
-	print("juego guardado")
+	#print("juego guardado")
 	#Global.load_game()
 
 func set_score(value):
 	score = value
+
+
+func _on_exit_game_pressed():
+	Multiplayer.multiplayer.multiplayer_peer = null
+	get_tree().quit()
+
+func _on_title_screen_pressed():
+	Multiplayer.multiplayer.multiplayer_peer = null
+	get_tree().change_scene_to_file("res://title_screen/title_screen.tscn")
+
+
+func _on_new_game_pressed():
+	$Game_over.hide()
+	game_start()
+	

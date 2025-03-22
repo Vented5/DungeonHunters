@@ -4,7 +4,7 @@ var c_folder = "res://art/"
 var characters = ["dog", "cat", "bear", "fox"] 
 var c_selected = 1
 var w_folder = "res://weapons/"
-var weapons = ["sword", "bow"]
+var weapons = ["sword", "bow", "shield", "staff"]
 var w_selected = 1
 
 func _ready():

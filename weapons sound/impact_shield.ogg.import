@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cplstucxwubu2"
+path="res://.godot/imported/impact_shield.ogg-f96ccd5c7aa7c854f4eaa9cd7dade595.oggvorbisstr"
+
+[deps]
+
+source_file="res://weapons sound/impact_shield.ogg"
+dest_files=["res://.godot/imported/impact_shield.ogg-f96ccd5c7aa7c854f4eaa9cd7dade595.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

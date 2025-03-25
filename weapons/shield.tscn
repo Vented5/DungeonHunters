@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bk4xb715iuqq1"]
+
+[ext_resource type="Texture2D" uid="uid://c2ra151khro4a" path="res://weapons/shield.png" id="1_vx5hr"]
+
+[node name="Shield" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("1_vx5hr")

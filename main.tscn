@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cht2ngyuph4ad"]
+[gd_scene load_steps=14 format=3 uid="uid://cht2ngyuph4ad"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_mtfga"]
 [ext_resource type="Texture2D" uid="uid://ri4h47dj2eer" path="res://art/background.jpg" id="2_nr6sa"]
@@ -8,6 +8,7 @@
 [ext_resource type="Theme" uid="uid://duj6yf803sxe4" path="res://themes/idle.tres" id="7_r28ph"]
 [ext_resource type="Script" path="res://button.gd" id="7_su0uf"]
 [ext_resource type="PackedScene" uid="uid://cn0oait4m0s65" path="res://ui/joystick/joystick.tscn" id="8_e1ji3"]
+[ext_resource type="Script" path="res://touch_screen_button_2.gd" id="8_xkbxb"]
 
 [sub_resource type="Curve2D" id="Curve2D_p1a8s"]
 _data = {
@@ -25,6 +26,9 @@ shadow_color = Color(0.00139673, 0.00139673, 0.00139673, 0)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_etmht"]
 radius = 527.06
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3s3mi"]
+size = Vector2(640, 720)
 
 [node name="Main" type="Node"]
 script = ExtResource("1_mtfga")
@@ -103,6 +107,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="Draw" type="Control" parent="HUD"]
+visible = false
 layout_mode = 3
 anchors_preset = 6
 anchor_left = 1.0
@@ -116,18 +121,25 @@ grow_horizontal = 0
 grow_vertical = 2
 
 [node name="Button" type="Button" parent="HUD"]
+visible = false
 self_modulate = Color(1, 1, 1, 0.556863)
 anchors_preset = 6
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -901.0
+offset_left = -722.0
 offset_top = -360.0
 offset_bottom = 360.0
 grow_horizontal = 0
 grow_vertical = 2
 script = ExtResource("7_su0uf")
+
+[node name="TouchScreenButton2" type="TouchScreenButton" parent="HUD"]
+position = Vector2(958, 360)
+shape = SubResource("RectangleShape2D_3s3mi")
+action = "draw"
+script = ExtResource("8_xkbxb")
 
 [node name="Game_over" type="CanvasLayer" parent="."]
 visible = false

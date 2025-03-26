@@ -1,7 +1,7 @@
 extends Button
 
 var counter = 0
-var delay = 20
+var delay = 5
 var last_position : Vector2 = Vector2.ZERO
 var new_position : Vector2
 var lines = []
@@ -14,7 +14,7 @@ func _process(delta: float) -> void:
 			if last_position != Vector2.ZERO: 
 				lines.append({"from": last_position, "to": new_position})
 				var vector = new_position - last_position
-				print("angle to: ", vector.angle())
+				#print("angle to: ", vector.angle())
 				print(get_direction(vector.angle()))
 			last_position = new_position
 			queue_redraw()

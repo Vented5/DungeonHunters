@@ -1,19 +1,20 @@
-[gd_scene load_steps=13 format=3 uid="uid://cht2ngyuph4ad"]
+[gd_scene load_steps=15 format=3 uid="uid://cht2ngyuph4ad"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_mtfga"]
-[ext_resource type="Texture2D" uid="uid://ri4h47dj2eer" path="res://art/background.jpg" id="2_nr6sa"]
+[ext_resource type="Texture2D" uid="uid://e4ie2px0cenf" path="res://background_forest.png" id="3_860c7"]
 [ext_resource type="PackedScene" uid="uid://dq1vsa5w8gn5o" path="res://slime/slime.tscn" id="3_ultmg"]
 [ext_resource type="Texture2D" uid="uid://cw543fi4x2eta" path="res://ui/battle.svg" id="7_fomfm"]
 [ext_resource type="PackedScene" uid="uid://cqy2kaeptmwos" path="res://health_bar.tscn" id="7_lace4"]
 [ext_resource type="Theme" uid="uid://duj6yf803sxe4" path="res://themes/idle.tres" id="7_r28ph"]
 [ext_resource type="PackedScene" uid="uid://cn0oait4m0s65" path="res://ui/joystick/joystick.tscn" id="8_e1ji3"]
 [ext_resource type="Script" path="res://touch_screen_button_2.gd" id="8_xkbxb"]
+[ext_resource type="AudioStream" uid="uid://2mdqubw2npld" path="res://music/battle_song.wav" id="10_0434j"]
 
 [sub_resource type="Curve2D" id="Curve2D_p1a8s"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -142.826, -101.277, 0, 0, 0, 0, 2133.89, -96.5864, 0, 0, 0, 0, 2138.59, 1165.32, 0, 0, 0, 0, -147.521, 1165.32, 0, 0, 0, 0, -142.826, -101.277)
+"points": PackedVector2Array(0, 0, 0, 0, -300.673, -16.2511, 0, 0, 0, 0, 1327.53, -27.5324, 0, 0, 0, 0, 2314.61, -33.2563, 0, 0, 0, 0, 2304.05, 1101.99, 0, 0, 0, 0, -311.235, 1098.47, 0, 0, 0, 0, -307.128, -29.1516)
 }
-point_count = 5
+point_count = 6
 
 [sub_resource type="LabelSettings" id="LabelSettings_c5fm1"]
 font_size = 40
@@ -36,7 +37,7 @@ slime_scene = ExtResource("3_ultmg")
 [node name="Background" type="Sprite2D" parent="."]
 position = Vector2(662, 353)
 scale = Vector2(3.6, 3)
-texture = ExtResource("2_nr6sa")
+texture = ExtResource("3_860c7")
 
 [node name="Mob_spawn_path" type="Path2D" parent="."]
 position = Vector2(-1036.59, -563.286)
@@ -44,8 +45,8 @@ scale = Vector2(1.70421, 1.70536)
 curve = SubResource("Curve2D_p1a8s")
 
 [node name="Mob_spawn_location" type="PathFollow2D" parent="Mob_spawn_path"]
-position = Vector2(-142.826, -101.277)
-rotation = 0.00206024
+position = Vector2(-300.673, -16.2511)
+rotation = -0.00692857
 
 [node name="Player_spawn" type="Marker2D" parent="."]
 position = Vector2(640, 360)
@@ -178,6 +179,11 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 24
 text = "You scored! :  "
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_0434j")
+volume_db = -9.021
+autoplay = true
 
 [connection signal="timeout" from="Slime_timer" to="." method="_on_slime_timer_timeout"]
 [connection signal="cast" from="HUD/TouchScreenButton2" to="." method="_on_touch_screen_button_2_cast"]

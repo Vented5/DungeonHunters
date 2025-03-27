@@ -9,7 +9,7 @@ var direction
 @onready var healthbar 
 
 func _ready():
-	health = 2
+	health = 10
 	if !OS.has_feature("dedicated_server"):
 		healthbar = $HealthBar
 		healthbar.init_health(health)

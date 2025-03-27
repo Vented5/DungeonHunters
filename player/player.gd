@@ -15,10 +15,12 @@ func _enter_tree() -> void:
 func _ready():
 	joystick = $"../HUD/Joystick"
 	
-	#$Sprite2D.texture = load(Global.character_texture_path) 
-	
 	if name == str(multiplayer.get_unique_id()):
 		add_child(Camera2D.new())
+	
+	var touch_screen = get_node("$./HUD/TouchScreenButton2")
+	print("touch_screen: ", touch_screen)
+	#touch_screen.cast.connect(_cast_spell)
 
 func _process(delta: float): 
 	if !is_multiplayer_authority(): return
@@ -65,3 +67,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		die.emit()
 		print("Player ", multiplayer.get_unique_id(), " has died")
 	print(Global.game_mode, " Slime contact, health: ", health)
+
+func _cast_spell():
+	print("Weeenas ha casteado un spell")
+	pass

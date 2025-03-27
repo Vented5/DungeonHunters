@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cht2ngyuph4ad"]
+[gd_scene load_steps=13 format=3 uid="uid://cht2ngyuph4ad"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_mtfga"]
 [ext_resource type="Texture2D" uid="uid://ri4h47dj2eer" path="res://art/background.jpg" id="2_nr6sa"]
@@ -6,7 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://cw543fi4x2eta" path="res://ui/battle.svg" id="7_fomfm"]
 [ext_resource type="PackedScene" uid="uid://cqy2kaeptmwos" path="res://health_bar.tscn" id="7_lace4"]
 [ext_resource type="Theme" uid="uid://duj6yf803sxe4" path="res://themes/idle.tres" id="7_r28ph"]
-[ext_resource type="Script" path="res://button.gd" id="7_su0uf"]
 [ext_resource type="PackedScene" uid="uid://cn0oait4m0s65" path="res://ui/joystick/joystick.tscn" id="8_e1ji3"]
 [ext_resource type="Script" path="res://touch_screen_button_2.gd" id="8_xkbxb"]
 
@@ -93,51 +92,10 @@ offset_right = 171.0
 offset_bottom = 47.0
 text = "< Player  name>"
 
-[node name="notify" type="Label" parent="HUD"]
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -123.0
-offset_bottom = 23.0
-grow_horizontal = 0
-text = "< Player  name>"
-
-[node name="CenterContainer" type="CenterContainer" parent="HUD"]
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="Draw" type="Control" parent="HUD"]
-visible = false
-layout_mode = 3
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -722.0
-offset_top = -360.0
-offset_bottom = 360.0
-grow_horizontal = 0
-grow_vertical = 2
-
-[node name="Button" type="Button" parent="HUD"]
-visible = false
-self_modulate = Color(1, 1, 1, 0.556863)
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -722.0
-offset_top = -360.0
-offset_bottom = 360.0
-grow_horizontal = 0
-grow_vertical = 2
-script = ExtResource("7_su0uf")
-
 [node name="TouchScreenButton2" type="TouchScreenButton" parent="HUD"]
 position = Vector2(958, 360)
 shape = SubResource("RectangleShape2D_3s3mi")
+shape_visible = false
 action = "draw"
 script = ExtResource("8_xkbxb")
 
@@ -222,6 +180,7 @@ theme_override_font_sizes/font_size = 24
 text = "You scored! :  "
 
 [connection signal="timeout" from="Slime_timer" to="." method="_on_slime_timer_timeout"]
+[connection signal="cast" from="HUD/TouchScreenButton2" to="." method="_on_touch_screen_button_2_cast"]
 [connection signal="pressed" from="Game_over/VBoxContainer/New Game" to="." method="_on_new_game_pressed"]
 [connection signal="pressed" from="Game_over/VBoxContainer/Title Screen" to="." method="_on_title_screen_pressed"]
 [connection signal="pressed" from="Game_over/VBoxContainer/Exit game" to="." method="_on_exit_game_pressed"]

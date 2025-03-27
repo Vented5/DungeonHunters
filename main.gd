@@ -7,10 +7,13 @@ var player
 var slime_count = 1
 const MAX_SLIMES = 20
 
+var fireball_scene = load("res://spells/fireball.tscn")
+
 func _ready():
 	print(Global.game_mode, " players: ", Multiplayer.players)
 	if multiplayer.is_server():
 		game_start()
+
 
 func game_start():
 	print(Global.game_mode, "----------------- Game start ---------------------")
@@ -18,6 +21,10 @@ func game_start():
 		rpc("spawn_player", i)
 	score = 0
 	$Slime_timer.start()
+
+func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("test"):
+		fireball()
 
 @rpc("call_local", "reliable")
 func spawn_player(id):
@@ -100,3 +107,19 @@ func _on_new_game_pressed():
 	$Game_over.hide()
 	game_start()
 	
+
+func _on_touch_screen_button_2_cast(drawing) -> void:
+	if drawing == [3]:
+		fireball()
+	else: 	$HUD/Label.text = str(drawing)
+
+func test():
+	pass
+
+func fireball():
+	$HUD/Label.text = "Fireball"
+	var player1 = get_node("1")
+	var fireball = fireball_scene.instantiate()
+	fireball.position = player1.position
+	fireball.rotation = $HUD/Joystick.pos_vector.angle()
+	add_child(fireball)

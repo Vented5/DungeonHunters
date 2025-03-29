@@ -21,6 +21,8 @@ func game_start():
 		rpc("spawn_player", i)
 	score = 0
 	$Slime_timer.start()
+	$Golem/AnimatedSprite2D.play("smash")
+
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("test"):

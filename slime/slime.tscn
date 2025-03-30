@@ -62,7 +62,7 @@ script = ExtResource("1_a1gr5")
 scale = Vector2(0.8, 0.8)
 sprite_frames = SubResource("SpriteFrames_p86m6")
 animation = &"move"
-frame_progress = 0.926602
+frame_progress = 0.571026
 offset = Vector2(0, -20)
 
 [node name="Area2D" type="Area2D" parent="."]

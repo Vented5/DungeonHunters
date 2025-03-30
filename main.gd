@@ -73,7 +73,7 @@ func _on_slime_died():
 	score += 100
 	slime_count -= 1
 	if !OS.has_feature("dedicated_server"):
-		$HUD/Score.text = "Scire: " + str(score)
+		$HUD/Score.text = "Score: " + str(score)
 
 
 func _on_player_hit():

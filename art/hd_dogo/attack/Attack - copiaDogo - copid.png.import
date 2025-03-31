@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bxoiqrpykcmit"
-path="res://.godot/imported/dog.png-0cd54e6504b19e781e1166a46f70dbea.ctex"
+uid="uid://b6h530a7pu08m"
+path="res://.godot/imported/Attack - copiaDogo - copid.png-5c7c1a8d920f3b6f73d6adc7ed7f1cc5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/dog.png"
-dest_files=["res://.godot/imported/dog.png-0cd54e6504b19e781e1166a46f70dbea.ctex"]
+source_file="res://art/hd_dogo/attack/Attack - copiaDogo - copid.png"
+dest_files=["res://.godot/imported/Attack - copiaDogo - copid.png-5c7c1a8d920f3b6f73d6adc7ed7f1cc5.ctex"]
 
 [params]
 

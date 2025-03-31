@@ -1,14 +1,97 @@
-[gd_scene load_steps=6 format=3 uid="uid://qiw2xgc314o0"]
+[gd_scene load_steps=21 format=3 uid="uid://qiw2xgc314o0"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_lrge0"]
-[ext_resource type="Texture2D" uid="uid://btla6w4q5qyeo" path="res://art/cat.png" id="2_7d6wy"]
+[ext_resource type="Texture2D" uid="uid://dgn8rn5xwatj2" path="res://art/hd_dogo/attack/Attack - copiaDog2 - copia 2.png" id="2_734a5"]
+[ext_resource type="Texture2D" uid="uid://bxoiqrpykcmit" path="res://art/dog.png" id="2_klv2w"]
+[ext_resource type="Texture2D" uid="uid://d03vmm1pp0b31" path="res://art/hd_dogo/walk/Walk - copia2.png" id="3_judo3"]
+[ext_resource type="Texture2D" uid="uid://buwwrhvqqvfyv" path="res://art/hd_dogo/attack/Attack - copiaDogo - copib.png" id="3_qwaqv"]
+[ext_resource type="Texture2D" uid="uid://p0tq8pir4m2v" path="res://art/hd_dogo/attack/Attack - copiaDogo - copic.png" id="4_4poqk"]
+[ext_resource type="Texture2D" uid="uid://b21wg24pbf581" path="res://art/hd_dogo/walk/Walk - copia3.png" id="4_5y1lj"]
+[ext_resource type="Texture2D" uid="uid://vf4xjtpsl7fx" path="res://art/hd_dogo/walk/Walk - copia4.png" id="5_8yhok"]
+[ext_resource type="Texture2D" uid="uid://b6h530a7pu08m" path="res://art/hd_dogo/attack/Attack - copiaDogo - copid.png" id="5_mn58o"]
+[ext_resource type="Texture2D" uid="uid://cfs3k7uvb8djy" path="res://art/hd_dogo/attack/Attack - copiaDogo - copie.png" id="6_57wdu"]
+[ext_resource type="Texture2D" uid="uid://cwytam2o5nymw" path="res://art/hd_dogo/walk/Walk - copia5.png" id="6_qdyqn"]
+[ext_resource type="Texture2D" uid="uid://ck6ifb0c3ttpf" path="res://art/hd_dogo/walk/Walk - copia6.png" id="7_b7tg1"]
+[ext_resource type="Texture2D" uid="uid://bkwbs0fx0q4eb" path="res://art/hd_dogo/attack/Attack - copiaDogo - copif.png" id="7_whpcs"]
+[ext_resource type="Texture2D" uid="uid://b0ilh1uu0jjv7" path="res://art/hd_dogo/attack/Attack - copiaDogo - copig.png" id="8_2i2pg"]
+[ext_resource type="Texture2D" uid="uid://dvwypdfkodlm2" path="res://art/hd_dogo/attack/Attack - copiaDogo - copih.png" id="9_vgs7m"]
+[ext_resource type="Texture2D" uid="uid://bltvjulw84g6d" path="res://art/hd_dogo/walk/Walk - copia1.png" id="16_ui7d6"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_3hfim"]
-size = Vector2(90, 138)
+[sub_resource type="SpriteFrames" id="SpriteFrames_doapc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_734a5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_qwaqv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_4poqk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_mn58o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_57wdu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_whpcs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_2i2pg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_vgs7m")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_klv2w")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_judo3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_5y1lj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_8yhok")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_qdyqn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_b7tg1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_5y1lj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_8yhok")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_qdyqn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_b7tg1")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8bynm"]
-radius = 16.0
-height = 102.0
+radius = 20.0
+height = 96.1538
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_0st56"]
 properties/0/path = NodePath(".:position")
@@ -18,28 +101,29 @@ properties/1/path = NodePath("Sprite2D:flip_h")
 properties/1/spawn = true
 properties/1/replication_mode = 2
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_7b1wx"]
+radius = 151.271
+
 [node name="Player" type="CharacterBody2D"]
-collision_layer = 0
-collision_mask = 0
+collision_layer = 4
+collision_mask = 2
 script = ExtResource("1_lrge0")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Animation" type="AnimatedSprite2D" parent="."]
 z_index = 1
-scale = Vector2(0.8, 0.8)
-texture = ExtResource("2_7d6wy")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2(-4, -0.5)
-scale = Vector2(0.8, 0.8)
-shape = SubResource("RectangleShape2D_3hfim")
-debug_color = Color(0.209424, 0.627019, 0.376233, 0.42)
+scale = Vector2(0.817442, 0.817442)
+sprite_frames = SubResource("SpriteFrames_doapc")
+animation = &"attack"
+frame = 6
 
 [node name="Area2D" type="Area2D" parent="."]
+position = Vector2(0, 23)
 collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(5.68434e-14, 16)
+rotation = 1.5708
 scale = Vector2(0.8, 0.832)
 shape = SubResource("CapsuleShape2D_8bynm")
 debug_color = Color(0.209424, 0.627019, 0.376233, 0.42)
@@ -53,5 +137,22 @@ offset_top = -93.0
 offset_right = 20.0
 offset_bottom = -70.0
 text = "< ID >"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(29.2773, 19)
+scale = Vector2(0.827273, 0.827273)
+texture = ExtResource("16_ui7d6")
+
+[node name="Sword_hit" type="Area2D" parent="."]
+visible = false
+collision_layer = 0
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sword_hit"]
+position = Vector2(119, -44)
+scale = Vector2(0.8, 0.8)
+shape = SubResource("CircleShape2D_7b1wx")
+debug_color = Color(7.41214e-06, 0.588662, 0.760996, 0.42)
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

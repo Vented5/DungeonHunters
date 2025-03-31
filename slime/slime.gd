@@ -2,14 +2,13 @@ extends CharacterBody2D
 
 signal die
 
-@export var health = 10 : set = _set_health
+@export var health = 2 : set = _set_health
 var speed = 100
 var direction
 
 @onready var healthbar 
 
 func _ready():
-	health = 10
 	if !OS.has_feature("dedicated_server"):
 		healthbar = $HealthBar
 		healthbar.init_health(health)

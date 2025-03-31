@@ -7,6 +7,8 @@ var direction = Vector2.ZERO
 signal hit
 signal die
 
+var is_attacking = 0
+
 func _enter_tree() -> void:
 	set_multiplayer_authority(name.to_int())
 	print(Global.game_mode, " New player created: ", name)
@@ -28,11 +30,13 @@ func _process(delta: float):
 	var vel = Vector2.ZERO 
 	if Input.is_action_pressed("move_right"):
 		vel.x += 1
-		$Sprite2D.flip_h = true
+		$Animation.flip_h = false
+		$Animation.play("walk")
 		#weapon.flip_h = true
 	if Input.is_action_pressed("move_left"):
 		vel.x -= 1
-		$Sprite2D.flip_h = false
+		$Animation.flip_h = true
+		$Animation.play("walk")
 		#weapon.flip_h = false
 	if Input.is_action_pressed("move_down"):
 		vel.y += 1
@@ -47,13 +51,40 @@ func _process(delta: float):
 	direction = joystick.pos_vector
 	if direction:
 		velocity = direction * speed
+		if direction.x < 0: $Animation.flip_h = true
+		else: $Animation.flip_h = false
+		if is_attacking == 0: $Animation.play("walk")
 	else:
 		velocity = Vector2.ZERO
+		if is_attacking == 0: $Animation.play("default")
 	move_and_slide()
-	if direction.x > 0:  # Derecha
-		$Sprite2D.flip_h = true
-	elif direction.x < 0:  # Izquierda
-		$Sprite2D.flip_h = false
+	
+	
+	if Input.is_action_just_pressed("attack") and is_attacking==0:
+		handle_attack()
+		
+
+func handle_attack():
+	is_attacking = 1
+	if $Animation.flip_h: 
+		$Animation.offset = Vector2(-105, -87)
+		$Sword_hit/CollisionShape2D.position.x = -119
+	else: 
+		$Animation.offset = Vector2(105, -87)
+		$Sword_hit/CollisionShape2D.position.x = 119
+	$Animation.play("attack")
+	await get_tree().create_timer(1.4).timeout
+	$Sword_hit.show()
+	$Sword_hit.collision_layer = 3
+	
+	await $Animation.animation_finished
+	#await get_tree().create_timer(1.6).timeout
+	$Sword_hit.collision_layer = 0
+	$Sword_hit.hide()
+	$Animation.stop()
+	is_attacking = 0
+	$Animation.offset = Vector2.ZERO
+	
 
 @rpc("authority")
 func _on_area_2d_body_entered(body: Node2D) -> void:

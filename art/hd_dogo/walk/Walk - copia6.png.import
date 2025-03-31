@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bxoiqrpykcmit"
-path="res://.godot/imported/dog.png-0cd54e6504b19e781e1166a46f70dbea.ctex"
+uid="uid://ck6ifb0c3ttpf"
+path="res://.godot/imported/Walk - copia6.png-c17efaa72b18c3fdfab05a3d14c4e076.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/dog.png"
-dest_files=["res://.godot/imported/dog.png-0cd54e6504b19e781e1166a46f70dbea.ctex"]
+source_file="res://art/hd_dogo/walk/Walk - copia6.png"
+dest_files=["res://.godot/imported/Walk - copia6.png-c17efaa72b18c3fdfab05a3d14c4e076.ctex"]
 
 [params]
 

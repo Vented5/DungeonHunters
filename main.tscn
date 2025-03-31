@@ -1,8 +1,8 @@
 [gd_scene load_steps=15 format=3 uid="uid://cht2ngyuph4ad"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_mtfga"]
-[ext_resource type="Texture2D" uid="uid://e4ie2px0cenf" path="res://background_forest.png" id="3_860c7"]
 [ext_resource type="PackedScene" uid="uid://dq1vsa5w8gn5o" path="res://slime/slime.tscn" id="3_ultmg"]
+[ext_resource type="Texture2D" uid="uid://ri4h47dj2eer" path="res://art/background.jpg" id="3_v6a1s"]
 [ext_resource type="PackedScene" uid="uid://bdjh8bek015m1" path="res://golem/golem.tscn" id="4_omhyb"]
 [ext_resource type="Texture2D" uid="uid://cw543fi4x2eta" path="res://ui/battle.svg" id="7_fomfm"]
 [ext_resource type="PackedScene" uid="uid://cqy2kaeptmwos" path="res://health_bar.tscn" id="7_lace4"]
@@ -39,7 +39,7 @@ slime_scene = ExtResource("3_ultmg")
 self_modulate = Color(1, 1, 1, 0.67451)
 position = Vector2(662, 353)
 scale = Vector2(3.6, 3)
-texture = ExtResource("3_860c7")
+texture = ExtResource("3_v6a1s")
 
 [node name="Mob_spawn_path" type="Path2D" parent="."]
 position = Vector2(-1036.59, -563.286)

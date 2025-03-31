@@ -33,7 +33,7 @@ func spawn_player(id):
 	#if OS.has_feature("dedicated_server") and id == 1: return
 	var player_instance = player_scene.instantiate()
 	player_instance.name = str(id)
-	player_instance.get_node("Sprite2D").texture = load(Multiplayer.players[id].skin)
+	#player_instance.get_node("Sprite2D").texture = load(Multiplayer.players[id].skin)
 	player_instance.position = Vector2.ZERO
 
 	if multiplayer.get_unique_id() == id:
@@ -47,7 +47,7 @@ func spawn_player(id):
 	var weapon_scene: PackedScene = load(Multiplayer.players[id].weapon)
 	var weapon = weapon_scene.instantiate()
 	weapon.set_multiplayer_authority(id)
-	player_instance.add_child(weapon)
+	#player_instance.add_child(weapon)
 
 	print(Global.game_mode," Jugador ", id,  " spawned at: ", player_instance. position)
 

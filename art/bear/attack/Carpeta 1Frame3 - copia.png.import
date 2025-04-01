@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bq81mc50hmv6o"
-path="res://.godot/imported/bear.png-99df99236de19018066305ad57ebf274.ctex"
+uid="uid://08p7kl60ljha"
+path="res://.godot/imported/Carpeta 1Frame3 - copia.png-9a81750fe15799770404a47b29b3ed02.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/bear.png"
-dest_files=["res://.godot/imported/bear.png-99df99236de19018066305ad57ebf274.ctex"]
+source_file="res://art/bear/attack/Carpeta 1Frame3 - copia.png"
+dest_files=["res://.godot/imported/Carpeta 1Frame3 - copia.png-9a81750fe15799770404a47b29b3ed02.ctex"]
 
 [params]
 

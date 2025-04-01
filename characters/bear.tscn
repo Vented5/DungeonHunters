@@ -1,0 +1,101 @@
+[gd_scene load_steps=15 format=3 uid="uid://c2v71lqrjsqdk"]
+
+[ext_resource type="Texture2D" uid="uid://b2nfey4vyb5tn" path="res://art/bear/walk/Carpeta 11.png" id="1_1ky5r"]
+[ext_resource type="Script" path="res://characters/bear.gd" id="1_uk2qh"]
+[ext_resource type="Texture2D" uid="uid://cf72b7jhrck2f" path="res://art/bear/attack/Carpeta 1Frame1 - copia.png" id="2_4bjk6"]
+[ext_resource type="Texture2D" uid="uid://b42x1ab20c8se" path="res://art/bear/walk/Carpeta 12.png" id="2_7xgjv"]
+[ext_resource type="Texture2D" uid="uid://f00dvwb3vgy2" path="res://art/bear/attack/Carpeta 1Frame2 - copia.png" id="3_imd5o"]
+[ext_resource type="Texture2D" uid="uid://cmceuk5ttx1v4" path="res://art/bear/walk/Carpeta 13.png" id="3_wpxft"]
+[ext_resource type="Texture2D" uid="uid://ciygqp08ftyjq" path="res://art/bear/walk/Carpeta 14.png" id="4_2tk7b"]
+[ext_resource type="Texture2D" uid="uid://08p7kl60ljha" path="res://art/bear/attack/Carpeta 1Frame3 - copia.png" id="4_7y5y5"]
+[ext_resource type="Texture2D" uid="uid://bbpijobwpgytq" path="res://art/bear/walk/Carpeta 15.png" id="5_2ifh7"]
+[ext_resource type="Texture2D" uid="uid://hoy30qkxocgb" path="res://art/bear/attack/Carpeta 1Frame4 - copia.png" id="5_xcosb"]
+[ext_resource type="Texture2D" uid="uid://byqgj6c1rg1xn" path="res://art/bear/walk/Carpeta 16.png" id="6_o5g50"]
+[ext_resource type="Texture2D" uid="uid://cp61acv7h60pw" path="res://art/bear/walk/Carpeta 17.png" id="7_ttegh"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4yl4a"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_4bjk6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_imd5o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_7y5y5")
+}, {
+"duration": 2.0,
+"texture": ExtResource("5_xcosb")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_1ky5r")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_7xgjv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_wpxft")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_2tk7b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_2ifh7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_o5g50")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_ttegh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_2tk7b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_2ifh7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_o5g50")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_ttegh")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4ofhb"]
+radius = 151.271
+
+[node name="Bear" type="CharacterBody2D"]
+script = ExtResource("1_uk2qh")
+
+[node name="Animation" type="AnimatedSprite2D" parent="."]
+z_index = 1
+sprite_frames = SubResource("SpriteFrames_4yl4a")
+animation = &"attack"
+frame = 3
+frame_progress = 1.0
+
+[node name="Sword_hit" type="Area2D" parent="."]
+visible = false
+collision_layer = 0
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sword_hit"]
+position = Vector2(119, 42)
+scale = Vector2(0.8, 0.8)
+shape = SubResource("CircleShape2D_4ofhb")
+debug_color = Color(7.41214e-06, 0.588662, 0.760996, 0.42)

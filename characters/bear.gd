@@ -1,4 +1,5 @@
 extends CharacterBody2D
+
 @onready var joystick
 
 @export var health = 4
@@ -10,22 +11,22 @@ signal die
 var is_attacking = 0
 
 func _enter_tree() -> void:
-	set_multiplayer_authority(name.to_int())
+	#set_multiplayer_authority(name.to_int())
 	print(Global.game_mode, " New player created: ", name)
-	$Label.text = name
+	#$Label.text = name
 
 func _ready():
 	joystick = $"../HUD/Joystick"
 	
-	if name == str(multiplayer.get_unique_id()):
-		add_child(Camera2D.new())
+	#if name == str(multiplayer.get_unique_id()):
+	#	add_child(Camera2D.new())
 	
-	var touch_screen = get_node("$./HUD/TouchScreenButton2")
-	print("touch_screen: ", touch_screen)
+	var touch_screen = get_node("$../HUD/TouchScreenButton2")
+	#print("touch_screen: ", touch_screen)
 	#touch_screen.cast.connect(_cast_spell)
 
 func _process(delta: float): 
-	if !is_multiplayer_authority(): return
+	#if !is_multiplayer_authority(): return
 	# --------------------------- Key Movement ------------------------------
 	var vel = Vector2.ZERO 
 	if Input.is_action_pressed("move_right"):
@@ -64,10 +65,10 @@ func _process(delta: float):
 func handle_attack():
 	is_attacking = 1
 	if $Animation.flip_h: 
-		$Animation.offset = Vector2(-105, 0)
+		#$Animation.offset = Vector2(-105, 0)
 		$Sword_hit/CollisionShape2D.position.x = -119
 	else: 
-		$Animation.offset = Vector2(105, 0)
+		#$Animation.offset = Vector2(105, 0)
 		$Sword_hit/CollisionShape2D.position.x = 119
 	$Animation.play("attack")
 	await get_tree().create_timer(1.4).timeout
@@ -85,7 +86,7 @@ func handle_attack():
 
 @rpc("authority")
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	if !is_multiplayer_authority(): return
+	#if !is_multiplayer_authority(): return
 	health -= 1
 	hit.emit()
 	if health <= 0:

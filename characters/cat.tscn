@@ -1,0 +1,76 @@
+[gd_scene load_steps=6 format=3 uid="uid://dxj7wq2dl1l1h"]
+
+[ext_resource type="Script" path="res://characters/cat.gd" id="1_otise"]
+[ext_resource type="Texture2D" uid="uid://cy4nshp4d4px5" path="res://art/cat.png" id="2_d6xhs"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_f5lbm"]
+animations = [{
+"frames": [],
+"loop": false,
+"name": &"attack",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_d6xhs")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ggklp"]
+radius = 37.5
+height = 120.192
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wjo0n"]
+radius = 151.271
+
+[node name="Cat" type="CharacterBody2D"]
+script = ExtResource("1_otise")
+
+[node name="Animation" type="AnimatedSprite2D" parent="."]
+z_index = 1
+sprite_frames = SubResource("SpriteFrames_f5lbm")
+animation = &"walk"
+
+[node name="Animation" type="AnimatedSprite2D" parent="Animation"]
+z_index = 1
+sprite_frames = SubResource("SpriteFrames_f5lbm")
+
+[node name="Hitbox" type="Area2D" parent="."]
+position = Vector2(0, 23)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(3.8147e-06, 92)
+rotation = 1.5708
+scale = Vector2(0.8, 0.832)
+shape = SubResource("CapsuleShape2D_ggklp")
+debug_color = Color(0.209424, 0.627019, 0.376233, 0.42)
+
+[node name="Attack_hitbox" type="Area2D" parent="."]
+visible = false
+collision_layer = 0
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Attack_hitbox"]
+position = Vector2(119, 42)
+scale = Vector2(0.8, 0.8)
+shape = SubResource("CircleShape2D_wjo0n")
+debug_color = Color(7.41214e-06, 0.588662, 0.760996, 0.42)
+
+[node name="Label" type="Label" parent="."]
+offset_left = -24.0
+offset_top = -213.0
+offset_right = 20.0
+offset_bottom = -190.0
+text = "< ID >"
+
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]

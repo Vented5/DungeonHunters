@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://o8t1wm6e3ds1"
+path="res://.godot/imported/Fire.wav-0c1fd4e2f282343fd9f0a2c7f4e6a776.sample"
+
+[deps]
+
+source_file="res://sound/magic sounds/Fire.wav"
+dest_files=["res://.godot/imported/Fire.wav-0c1fd4e2f282343fd9f0a2c7f4e6a776.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

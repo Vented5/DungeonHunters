@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://c2v71lqrjsqdk"]
+[gd_scene load_steps=16 format=3 uid="uid://c2v71lqrjsqdk"]
 
 [ext_resource type="Texture2D" uid="uid://b2nfey4vyb5tn" path="res://art/bear/walk/Carpeta 11.png" id="1_1ky5r"]
 [ext_resource type="Script" path="res://characters/bear.gd" id="1_uk2qh"]
@@ -76,6 +76,10 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lrc3c"]
+radius = 37.5
+height = 120.192
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_4ofhb"]
 radius = 151.271
 
@@ -86,12 +90,24 @@ script = ExtResource("1_uk2qh")
 z_index = 1
 sprite_frames = SubResource("SpriteFrames_4yl4a")
 
-[node name="Sword_hit" type="Area2D" parent="."]
+[node name="Hitbox" type="Area2D" parent="."]
+position = Vector2(0, 23)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(3.8147e-06, 92)
+rotation = 1.5708
+scale = Vector2(0.8, 0.832)
+shape = SubResource("CapsuleShape2D_lrc3c")
+debug_color = Color(0.209424, 0.627019, 0.376233, 0.42)
+
+[node name="Attack_hitbox" type="Area2D" parent="."]
 visible = false
 collision_layer = 0
 collision_mask = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Sword_hit"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Attack_hitbox"]
 position = Vector2(119, 42)
 scale = Vector2(0.8, 0.8)
 shape = SubResource("CircleShape2D_4ofhb")
@@ -103,3 +119,5 @@ offset_top = -213.0
 offset_right = 20.0
 offset_bottom = -190.0
 text = "< ID >"
+
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]

@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dp0wtvu7g1k8x"
+path="res://.godot/imported/bow_sound.ogg-ae7ec851e13128461a3b80e08749050c.oggvorbisstr"
+
+[deps]
+
+source_file="res://sound/weapons sound/bow_sound.ogg"
+dest_files=["res://.godot/imported/bow_sound.ogg-ae7ec851e13128461a3b80e08749050c.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

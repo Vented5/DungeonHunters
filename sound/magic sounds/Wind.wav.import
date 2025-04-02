@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cny4m6khvxdol"
+path="res://.godot/imported/Wind.wav-6db4dad26bead67b7d96049d77f0c235.sample"
+
+[deps]
+
+source_file="res://sound/magic sounds/Wind.wav"
+dest_files=["res://.godot/imported/Wind.wav-6db4dad26bead67b7d96049d77f0c235.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

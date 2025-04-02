@@ -40,10 +40,8 @@ func spawn_player(id):
 	player_instance.position = Vector2.ZERO
 
 	if multiplayer.get_unique_id() == id:
-		$HUD/HealthBar.init_health(player_instance.health)
 		player_instance.hit.connect(_on_player_hit)
 		player_instance.die.connect(_on_player_die)
-		$HUD/Label.text = str(Multiplayer.players[id].name)
 	
 	add_child(player_instance)
 	print(Global.game_mode," Jugador ", id,  " spawned at: ", player_instance. position)
@@ -99,7 +97,7 @@ func _on_exit_game_pressed():
 
 func _on_title_screen_pressed():
 	Multiplayer.multiplayer.multiplayer_peer = null
-	get_tree().change_scene_to_file("res://title_screen/title_screen.tscn")
+	get_tree().change_scene_to_file("res://screens/title_screen/title_screen.tscn")
 
 
 func _on_new_game_pressed():

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://c2nq8hh1yhhdn"
+path="res://.godot/imported/Magic_Shield.wav-3bb73cb3c73b5764dd50c2c97c99ba98.sample"
+
+[deps]
+
+source_file="res://sound/magic sounds/Magic_Shield.wav"
+dest_files=["res://.godot/imported/Magic_Shield.wav-3bb73cb3c73b5764dd50c2c97c99ba98.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

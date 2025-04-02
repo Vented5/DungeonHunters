@@ -1,16 +1,15 @@
-[gd_scene load_steps=16 format=3 uid="uid://cht2ngyuph4ad"]
+[gd_scene load_steps=15 format=3 uid="uid://cht2ngyuph4ad"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_mtfga"]
 [ext_resource type="PackedScene" uid="uid://dq1vsa5w8gn5o" path="res://slime/slime.tscn" id="3_ultmg"]
 [ext_resource type="Texture2D" uid="uid://ri4h47dj2eer" path="res://art/background.jpg" id="3_v6a1s"]
 [ext_resource type="PackedScene" uid="uid://bdjh8bek015m1" path="res://golem/golem.tscn" id="4_omhyb"]
 [ext_resource type="Texture2D" uid="uid://cw543fi4x2eta" path="res://ui/battle.svg" id="7_fomfm"]
-[ext_resource type="PackedScene" uid="uid://cqy2kaeptmwos" path="res://health_bar.tscn" id="7_lace4"]
+[ext_resource type="PackedScene" uid="uid://cqy2kaeptmwos" path="res://ui/health_bar.tscn" id="7_lace4"]
 [ext_resource type="Theme" uid="uid://duj6yf803sxe4" path="res://themes/idle.tres" id="7_r28ph"]
 [ext_resource type="PackedScene" uid="uid://cn0oait4m0s65" path="res://ui/joystick/joystick.tscn" id="8_e1ji3"]
-[ext_resource type="Script" path="res://touch_screen_button_2.gd" id="8_xkbxb"]
+[ext_resource type="Script" path="res://ui/touch_screen_button_2.gd" id="8_xkbxb"]
 [ext_resource type="AudioStream" uid="uid://2mdqubw2npld" path="res://music/battle_song.wav" id="10_0434j"]
-[ext_resource type="PackedScene" uid="uid://c2v71lqrjsqdk" path="res://characters/bear.tscn" id="11_wucvw"]
 
 [sub_resource type="Curve2D" id="Curve2D_p1a8s"]
 _data = {
@@ -191,9 +190,6 @@ autoplay = true
 [node name="Golem" parent="." instance=ExtResource("4_omhyb")]
 position = Vector2(1361, -24)
 scale = Vector2(3.6, 3)
-
-[node name="Bear" parent="." instance=ExtResource("11_wucvw")]
-position = Vector2(-278, 0)
 
 [connection signal="timeout" from="Slime_timer" to="." method="_on_slime_timer_timeout"]
 [connection signal="cast" from="HUD/TouchScreenButton2" to="." method="_on_touch_screen_button_2_cast"]

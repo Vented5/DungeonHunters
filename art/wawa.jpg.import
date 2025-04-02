@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://e4ie2px0cenf"
-path="res://.godot/imported/background_forest.png-a3769ec76000effcb9911f654b534598.ctex"
+uid="uid://bk5we4480gkw2"
+path="res://.godot/imported/wawa.jpg-403ea35dd6c61c46a4f9c6baf5ab8b6e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://background_forest.png"
-dest_files=["res://.godot/imported/background_forest.png-a3769ec76000effcb9911f654b534598.ctex"]
+source_file="res://art/wawa.jpg"
+dest_files=["res://.godot/imported/wawa.jpg-403ea35dd6c61c46a4f9c6baf5ab8b6e.ctex"]
 
 [params]
 

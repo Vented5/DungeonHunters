@@ -1,6 +1,7 @@
 extends Node
 
-var c_folder = "res://art/"
+var c_texture_folder = "res://art/"
+var c_folder = "res://characters/"
 var characters = ["dog", "cat", "bear", "fox"] 
 var c_selected = 0
 
@@ -12,7 +13,7 @@ func _process(delta):
 		_go_back()
 
 func load_c_texture():
-	var c_texture = load(c_folder + characters[c_selected] + ".png")
+	var c_texture = load(c_texture_folder + characters[c_selected] + ".png")
 	$C_textureRect.texture = c_texture
 	$Character.text = characters[c_selected]
 
@@ -32,8 +33,8 @@ func _on_prev_character_pressed() -> void:
 	load_c_texture()
 
 func _on_start_pressed() -> void:
-	Global.character_texture_path=(c_folder + characters[c_selected] + ".png")
-	
+	#Global.character_texture_path=(c_folder + characters[c_selected] + ".png")
+	Global.character_path = (c_folder + characters[c_selected] + ".tscn")
 	#if Global.game_mode == "single": 
 	#	get_tree().change_scene_to_file("res://main.tscn")
 	#	return

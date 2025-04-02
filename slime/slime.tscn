@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://dajsnavfjtykx" path="res://slime/sprites/2.png" id="2_481ba"]
 [ext_resource type="Texture2D" uid="uid://38jq4dy2ahsk" path="res://slime/sprites/3.png" id="3_l7a5k"]
 [ext_resource type="Texture2D" uid="uid://cx1xpmrw4bomh" path="res://slime/sprites/4.png" id="4_mpmaj"]
-[ext_resource type="PackedScene" uid="uid://cqy2kaeptmwos" path="res://health_bar.tscn" id="6_701h3"]
+[ext_resource type="PackedScene" uid="uid://cqy2kaeptmwos" path="res://ui/health_bar.tscn" id="6_701h3"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_p86m6"]
 animations = [{

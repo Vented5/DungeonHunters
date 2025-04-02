@@ -12,10 +12,10 @@ func _process(_delta: float):
 func handle_attack():
 	is_attacking = 1
 	if $Animation.flip_h: 
-		#$Animation.offset = Vector2(-105, 0)
+		$Animation.offset = Vector2(-105, 0)
 		$Sword_hit/CollisionShape2D.position.x = -119
 	else: 
-		#$Animation.offset = Vector2(105, 0)
+		$Animation.offset = Vector2(105, 0)
 		$Sword_hit/CollisionShape2D.position.x = 119
 	$Animation.play("attack")
 	await get_tree().create_timer(1.4).timeout
@@ -30,6 +30,3 @@ func handle_attack():
 	is_attacking = 0
 	$Animation.offset = Vector2.ZERO
 	
-
-	print("Weeenas ha casteado un spell")
-	pass

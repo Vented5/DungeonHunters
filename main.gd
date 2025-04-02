@@ -9,6 +9,9 @@ const MAX_SLIMES = 20
 
 var fireball_scene = load("res://spells/fireball.tscn")
 
+var bear_scene = load("res://characters/bear.tscn")
+var dog_scene = load("res://characters/dog.tscn")
+
 func _ready():
 	print(Global.game_mode, " players: ", Multiplayer.players)
 	if multiplayer.is_server():
@@ -24,14 +27,14 @@ func game_start():
 	$Golem/AnimatedSprite2D.play("smash")
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("test"):
 		fireball()
 
 @rpc("call_local", "reliable")
 func spawn_player(id):
 	#if OS.has_feature("dedicated_server") and id == 1: return
-	var player_instance = player_scene.instantiate()
+	var player_instance = load(Global.character_path).instantiate()
 	player_instance.name = str(id)
 	#player_instance.get_node("Sprite2D").texture = load(Multiplayer.players[id].skin)
 	player_instance.position = Vector2.ZERO
@@ -43,12 +46,6 @@ func spawn_player(id):
 		$HUD/Label.text = str(Multiplayer.players[id].name)
 	
 	add_child(player_instance)
-	
-	var weapon_scene: PackedScene = load(Multiplayer.players[id].weapon)
-	var weapon = weapon_scene.instantiate()
-	weapon.set_multiplayer_authority(id)
-	#player_instance.add_child(weapon)
-
 	print(Global.game_mode," Jugador ", id,  " spawned at: ", player_instance. position)
 
 func _on_slime_timer_timeout():

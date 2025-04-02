@@ -1,6 +1,7 @@
 extends CharacterBody2D
-@onready var joystick
+class_name Player
 
+var joystick
 @export var health = 4
 @export var speed = 300
 var direction = Vector2.ZERO
@@ -9,22 +10,19 @@ signal die
 
 var is_attacking = 0
 
-func _enter_tree() -> void:
-	set_multiplayer_authority(name.to_int())
-	print(Global.game_mode, " New player created: ", name)
-	$Label.text = name
-
 func _ready():
-	joystick = $"../HUD/Joystick"
+	set_multiplayer_authority(1)
+	joystick = get_node("../HUD/Joystick")
+	#set_multiplayer_authority(name.to_int())
+	print(Global.game_mode, " New player created: ", name)
+	$Label.text = name		
 	
 	if name == str(multiplayer.get_unique_id()):
 		add_child(Camera2D.new())
 	
-	var touch_screen = get_node("$./HUD/TouchScreenButton2")
-	print("touch_screen: ", touch_screen)
 	#touch_screen.cast.connect(_cast_spell)
 
-func _process(delta: float): 
+func _process(_delta: float): 
 	if !is_multiplayer_authority(): return
 	# --------------------------- Key Movement ------------------------------
 	var vel = Vector2.ZERO 
@@ -42,7 +40,7 @@ func _process(delta: float):
 		vel = vel.normalized() * speed
 		$Animation.play("walk")
 	
-	position += vel * delta
+	position += vel * _delta
 	
 	# ------------------------- Joystick movement -------------------------------
 	direction = joystick.pos_vector
@@ -55,33 +53,10 @@ func _process(delta: float):
 		velocity = Vector2.ZERO
 	move_and_slide()
 	
-	if Input.is_action_just_pressed("attack") and is_attacking==0:
-		handle_attack()
-	
 	if !direction and vel == Vector2.ZERO and is_attacking == 0:
 		$Animation.play("default")
 
-func handle_attack():
-	is_attacking = 1
-	if $Animation.flip_h: 
-		$Animation.offset = Vector2(-105, 0)
-		$Sword_hit/CollisionShape2D.position.x = -119
-	else: 
-		$Animation.offset = Vector2(105, 0)
-		$Sword_hit/CollisionShape2D.position.x = 119
-	$Animation.play("attack")
-	await get_tree().create_timer(1.4).timeout
-	$Sword_hit.show()
-	$Sword_hit.collision_layer = 3
-	
-	await $Animation.animation_finished
-	#await get_tree().create_timer(1.6).timeout
-	$Sword_hit.collision_layer = 0
-	$Sword_hit.hide()
-	$Animation.stop()
-	is_attacking = 0
-	$Animation.offset = Vector2.ZERO
-	
+
 
 @rpc("authority")
 func _on_area_2d_body_entered(body: Node2D) -> void:

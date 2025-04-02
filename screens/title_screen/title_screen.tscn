@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://screens/title_screen/title_screen.gd" id="1_qc3g2"]
 [ext_resource type="Texture2D" uid="uid://bk5we4480gkw2" path="res://art/wawa.jpg" id="2_hw1jq"]
-[ext_resource type="Theme" uid="uid://bq3k02vai70n2" path="res://themes/button.tres" id="3_exc8f"]
-[ext_resource type="AudioStream" uid="uid://seg2at0c8stn" path="res://sound/music/mainmenu.wav" id="4_vkq3r"]
+[ext_resource type="Theme" uid="uid://bq3k02vai70n2" path="res://ui/themes/button.tres" id="3_exc8f"]
+[ext_resource type="AudioStream" uid="uid://rj3hhikwok73" path="res://sound/music/select-menu-47560.mp3" id="5_q8gu1"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rjkp8"]
 bg_color = Color(0.322308, 0.425675, 0.14066, 1)
@@ -193,9 +193,8 @@ layout_mode = 2
 theme = ExtResource("3_exc8f")
 text = "Join"
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("4_vkq3r")
-volume_db = -6.559
+[node name="Select" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_q8gu1")
 
 [connection signal="pressed" from="BoxContainer/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="BoxContainer/Host" to="." method="_on_host_pressed"]

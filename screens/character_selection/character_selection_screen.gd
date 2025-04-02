@@ -6,6 +6,7 @@ var characters = ["dog", "cat", "bear", "fox"]
 var c_selected = 0
 
 func _ready():
+	$Select.play()
 	load_c_texture()
 
 func _process(delta):
@@ -19,6 +20,7 @@ func load_c_texture():
 
 
 func _on_next_character_pressed() -> void:
+	$Select2.play()
 	if c_selected == characters.size() -1:
 		c_selected = 0
 	else:
@@ -26,6 +28,7 @@ func _on_next_character_pressed() -> void:
 	load_c_texture()
 
 func _on_prev_character_pressed() -> void:
+	$Select2.play()
 	if c_selected == 0:
 		c_selected = characters.size() -1
 	else:

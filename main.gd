@@ -16,9 +16,11 @@ func _ready():
 	print(Global.game_mode, " players: ", Multiplayer.players)
 	if multiplayer.is_server():
 		game_start()
+	$Select.play()
 
 
 func game_start():
+	print_tree_pretty()
 	print(Global.game_mode, "----------------- Game start ---------------------")
 	for i in Multiplayer.players.keys():
 		rpc("spawn_player", i)
@@ -35,11 +37,12 @@ func _process(_delta: float) -> void:
 func spawn_player(id):
 	#if OS.has_feature("dedicated_server") and id == 1: return
 	var player_instance = load(Global.character_path).instantiate()
-	player_instance.name = str(id)
+	#player_instance.name = str(id)
 	#player_instance.get_node("Sprite2D").texture = load(Multiplayer.players[id].skin)
 	player_instance.position = Vector2.ZERO
 
 	if multiplayer.get_unique_id() == id:
+		player = player_instance
 		player_instance.hit.connect(_on_player_hit)
 		player_instance.die.connect(_on_player_die)
 	
@@ -73,7 +76,7 @@ func _on_slime_died():
 
 func _on_player_hit():
 	var aux = multiplayer.get_unique_id()
-	$HUD/HealthBar.health = get_node(str(aux)).health
+	$HUD/HealthBar.health = player.health
 
 func _on_player_die():
 	game_over()
@@ -83,6 +86,8 @@ func game_over():
 	$Game_over/Score.text += str(score)
 	$Game_over.show()
 	$Slime_timer.stop()
+	$AudioStreamPlayer.stop()
+	$Game_over_sound.play()
 	#Global.save_highscore(5000)
 	#print("juego guardado")
 	#Global.load_game()
@@ -115,8 +120,7 @@ func test():
 
 func fireball():
 	$HUD/Label.text = "Fireball"
-	var player1 = get_node("1")
 	var fireball = fireball_scene.instantiate()
-	fireball.position = player1.position
+	fireball.position = player.position
 	fireball.rotation = $HUD/Joystick.pos_vector.angle()
 	add_child(fireball)

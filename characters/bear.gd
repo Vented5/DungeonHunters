@@ -1,7 +1,7 @@
 extends Player
 
 func _ready():
-	health = 8
+	health = 6
 	super.init_health()
 	super._ready()
 
@@ -20,10 +20,10 @@ func handle_attack():
 		#$Animation.offset = Vector2(105, 0)
 		$Attack_hitbox/CollisionShape2D.position.x = 119
 	$Animation.play("attack")
-	await get_tree().create_timer(1.4).timeout
+	await get_tree().create_timer(1.2).timeout
+	$AudioStreamPlayer.play()
 	$Attack_hitbox.show()
 	$Attack_hitbox.collision_layer = 3
-	
 	await $Animation.animation_finished
 	#await get_tree().create_timer(1.6).timeout
 	$Attack_hitbox.collision_layer = 0

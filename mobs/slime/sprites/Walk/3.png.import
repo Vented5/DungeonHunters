@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cx1xpmrw4bomh"
-path="res://.godot/imported/4.png-0b241f1935fd69319cc6cbbdeee4b3fc.ctex"
+uid="uid://38jq4dy2ahsk"
+path="res://.godot/imported/3.png-1db123ab0e1281a3fddf620db09bbeb1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://mobs/slime/sprites/4.png"
-dest_files=["res://.godot/imported/4.png-0b241f1935fd69319cc6cbbdeee4b3fc.ctex"]
+source_file="res://mobs/slime/sprites/Walk/3.png"
+dest_files=["res://.godot/imported/3.png-1db123ab0e1281a3fddf620db09bbeb1.ctex"]
 
 [params]
 

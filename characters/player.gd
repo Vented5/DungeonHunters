@@ -10,6 +10,8 @@ signal die
 
 var is_attacking = 0
 
+var music_player = AudioStreamPlayer.new()
+
 func _ready():
 	set_multiplayer_authority(1)
 	joystick = get_node("../HUD/Joystick")
@@ -18,12 +20,14 @@ func _ready():
 	$Label.text = name		
 
 	
-	if name == str(multiplayer.get_unique_id()):
+	if get_multiplayer_authority() == multiplayer.get_unique_id():
 		add_child(Camera2D.new())
 		$"../HUD/Label".text = str(Multiplayer.player_info.name)
-	
+		
 	#touch_screen.cast.connect(_cast_spell)
-
+	music_player.stream = preload("res://sound/weapons sound/chatton-87836.mp3")
+	music_player.volume_db = -4
+	add_child(music_player)
 
 func _process(_delta: float): 
 	if !is_multiplayer_authority(): return
@@ -65,6 +69,7 @@ func init_health():
 
 @rpc("authority")
 func get_hit(body: Node2D) -> void:
+	music_player.play()
 	if !is_multiplayer_authority(): return
 	health -= 1
 	hit.emit()

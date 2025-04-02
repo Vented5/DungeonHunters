@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://drem48yx3qbei"]
+[gd_scene load_steps=5 format=3 uid="uid://drem48yx3qbei"]
 
 [ext_resource type="Script" path="res://spells/fireball.gd" id="1_bylai"]
 [ext_resource type="Texture2D" uid="uid://cxohpkkjtb7rd" path="res://spells/Fireball.png" id="1_jn2fw"]
+[ext_resource type="AudioStream" uid="uid://o8t1wm6e3ds1" path="res://sound/magic sounds/Fire.wav" id="3_i7tma"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rxoyl"]
 radius = 54.0093
@@ -19,6 +20,9 @@ shape = SubResource("CircleShape2D_rxoyl")
 debug_color = Color(0, 0.646717, 0.230122, 0.42)
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_i7tma")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

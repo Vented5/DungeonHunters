@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dsn2fxw6a2t5n"
+path="res://.godot/imported/rapid-wind-sound-effect-1-108398.mp3-d6911e1fab50002b4085a52322157000.mp3str"
+
+[deps]
+
+source_file="res://sound/weapons sound/rapid-wind-sound-effect-1-108398.mp3"
+dest_files=["res://.godot/imported/rapid-wind-sound-effect-1-108398.mp3-d6911e1fab50002b4085a52322157000.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

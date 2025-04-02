@@ -7,6 +7,7 @@ var speed = 100
 var direction
 
 @onready var healthbar 
+var stun = false
 
 func _ready():
 	if !OS.has_feature("dedicated_server"):
@@ -17,11 +18,13 @@ func _ready():
 
 func _process(delta):
 	if !multiplayer.is_server(): return
-	var player = get_parent().get_node("1")
-	if player:
-		direction = get_angle_to(player.position)
 	
-	rpc("move", direction)
+	var player = get_parent().player
+	if player and is_instance_valid(player):
+		direction = get_angle_to(player.position)
+	else: direction = randf()
+	
+	if !stun: rpc("move", direction)
 
 @rpc("call_local", "any_peer", "unreliable")
 func move(dir):
@@ -34,17 +37,31 @@ func _on_area_2d_body_entered(body: Node2D):
 	pass
 
 
-func _on_area_2d_area_entered(area: Area2D) -> void:
+func _on_area_2d_area_entered(area: Area2D) -> void:	
 	#if !multiplayer.is_server(): return
-	rpc("_set_health", health - 1)
-	
+	if area.name == "Arrow":
+		rpc("_set_health", health - 2)
+	else:
+		rpc("_set_health", health - 1)
+	$Hit.play()
+	$AnimatedSprite2D.play("hit")
+	if area.get_parent().name != "Bear": 
+		await get_tree().create_timer(1).timeout
+	else:
+		stun = true
+		await get_tree().create_timer(2).timeout
+	stun = false
+	$AnimatedSprite2D.play("move")
 
 @rpc("any_peer", "call_local", "unreliable")
 func _set_health(value):
 	health = value
 	if health <= 0:
-		self.collision_layer = 0
 		emit_signal("die")
+		$Die.play()
+		stun = true
+		self.collision_layer = 0
+		await get_tree().create_timer(0.5).timeout
 		queue_free()
 
 	if !OS.has_feature("dedicated_server"):

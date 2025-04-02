@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://c2v71lqrjsqdk"]
+[gd_scene load_steps=17 format=3 uid="uid://c2v71lqrjsqdk"]
 
 [ext_resource type="Texture2D" uid="uid://b2nfey4vyb5tn" path="res://art/bear/walk/Carpeta 11.png" id="1_1ky5r"]
 [ext_resource type="Script" path="res://characters/bear.gd" id="1_uk2qh"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://hoy30qkxocgb" path="res://art/bear/attack/Carpeta 1Frame4 - copia.png" id="5_xcosb"]
 [ext_resource type="Texture2D" uid="uid://byqgj6c1rg1xn" path="res://art/bear/walk/Carpeta 16.png" id="6_o5g50"]
 [ext_resource type="Texture2D" uid="uid://cp61acv7h60pw" path="res://art/bear/walk/Carpeta 17.png" id="7_ttegh"]
+[ext_resource type="AudioStream" uid="uid://bni2slq0qyegl" path="res://sound/weapons sound/hit-rock-02-266304.mp3" id="13_kss7e"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_4yl4a"]
 animations = [{
@@ -80,7 +81,7 @@ animations = [{
 radius = 37.5
 height = 120.192
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_4ofhb"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_2cyfx"]
 radius = 151.271
 
 [node name="Bear" type="CharacterBody2D"]
@@ -89,6 +90,7 @@ script = ExtResource("1_uk2qh")
 [node name="Animation" type="AnimatedSprite2D" parent="."]
 z_index = 1
 sprite_frames = SubResource("SpriteFrames_4yl4a")
+animation = &"attack"
 
 [node name="Hitbox" type="Area2D" parent="."]
 position = Vector2(0, 23)
@@ -102,6 +104,13 @@ scale = Vector2(0.8, 0.832)
 shape = SubResource("CapsuleShape2D_lrc3c")
 debug_color = Color(0.209424, 0.627019, 0.376233, 0.42)
 
+[node name="Label" type="Label" parent="."]
+offset_left = -24.0
+offset_top = -213.0
+offset_right = 20.0
+offset_bottom = -190.0
+text = "< ID >"
+
 [node name="Attack_hitbox" type="Area2D" parent="."]
 visible = false
 collision_layer = 0
@@ -110,14 +119,10 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Attack_hitbox"]
 position = Vector2(119, 42)
 scale = Vector2(0.8, 0.8)
-shape = SubResource("CircleShape2D_4ofhb")
+shape = SubResource("CircleShape2D_2cyfx")
 debug_color = Color(7.41214e-06, 0.588662, 0.760996, 0.42)
 
-[node name="Label" type="Label" parent="."]
-offset_left = -24.0
-offset_top = -213.0
-offset_right = 20.0
-offset_bottom = -190.0
-text = "< ID >"
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_kss7e")
 
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]

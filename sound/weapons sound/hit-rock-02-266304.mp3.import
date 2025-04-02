@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bni2slq0qyegl"
+path="res://.godot/imported/hit-rock-02-266304.mp3-9a86de549cd23a0d69ce06b698ea5400.mp3str"
+
+[deps]
+
+source_file="res://sound/weapons sound/hit-rock-02-266304.mp3"
+dest_files=["res://.godot/imported/hit-rock-02-266304.mp3-9a86de549cd23a0d69ce06b698ea5400.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

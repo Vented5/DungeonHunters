@@ -12,6 +12,7 @@ var players = {}
 var player_info = { "name": "Weeenas", "weapon": ""}
 var player = 1
 var players_loaded = 0
+var music_player = AudioStreamPlayer.new()
 
 func _ready():
 	multiplayer.peer_connected.connect(_on_player_connected)
@@ -19,6 +20,12 @@ func _ready():
 	multiplayer.connected_to_server.connect(_on_connected_ok)
 	multiplayer.connection_failed.connect(_on_connected_fail)
 	multiplayer.server_disconnected.connect(_on_server_disconnected)
+
+	music_player.stream = preload("res://sound/music/mainmenu.wav")
+	music_player.volume_db = -12
+	add_child(music_player)
+	music_player.play()
+	
 
 func create_server():
 	var peer = ENetMultiplayerPeer.new()
@@ -61,6 +68,7 @@ func _register_player(new_player_info):
 # do Lobby.load_game.rpc(filepath)
 @rpc("any_peer", "call_local", "reliable")
 func load_game(game_scene_path):
+	music_player.stop()
 	get_tree().change_scene_to_file(game_scene_path)
 
 @rpc("any_peer", "call_local", "reliable")

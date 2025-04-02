@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://deeitfmmj4pm8"]
+[gd_scene load_steps=7 format=3 uid="uid://deeitfmmj4pm8"]
 
 [ext_resource type="Script" path="res://characters/dog.gd" id="1_6x4jh"]
 [ext_resource type="SpriteFrames" uid="uid://d3thsrgrvutas" path="res://art/hd_dogo/player.tres" id="2_yhimo"]
+[ext_resource type="AudioStream" uid="uid://pjkbkiaap2u" path="res://sound/weapons sound/sword-slash-and-swing-185432.mp3" id="3_e812n"]
+[ext_resource type="AudioStream" uid="uid://dsn2fxw6a2t5n" path="res://sound/weapons sound/rapid-wind-sound-effect-1-108398.mp3" id="4_lsch0"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pnfu6"]
 radius = 20.0
@@ -24,7 +26,7 @@ text = "< ID >"
 z_index = 1
 scale = Vector2(0.817442, 0.817442)
 sprite_frames = ExtResource("2_yhimo")
-animation = &"walk"
+animation = &"attack"
 
 [node name="Hitbox" type="Area2D" parent="."]
 position = Vector2(0, 23)
@@ -48,5 +50,13 @@ position = Vector2(119, 42)
 scale = Vector2(0.8, 0.8)
 shape = SubResource("CircleShape2D_s7tve")
 debug_color = Color(7.41214e-06, 0.588662, 0.760996, 0.42)
+
+[node name="Attack" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_e812n")
+volume_db = -11.142
+
+[node name="Jump" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_lsch0")
+volume_db = -7.427
 
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]

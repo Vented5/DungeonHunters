@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://38jq4dy2ahsk"
-path="res://.godot/imported/3.png-4bc4731a7533eae3e9af597e01702dcc.ctex"
+uid="uid://ry0gyfa7iyag"
+path="res://.godot/imported/Carpeta 1 - copiaGato2 - copia 11.png-18f29044fbe3c512e384826e024a8a29.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://mobs/slime/sprites/3.png"
-dest_files=["res://.godot/imported/3.png-4bc4731a7533eae3e9af597e01702dcc.ctex"]
+source_file="res://art/cat/Walk/Carpeta 1 - copiaGato2 - copia 11.png"
+dest_files=["res://.godot/imported/Carpeta 1 - copiaGato2 - copia 11.png-18f29044fbe3c512e384826e024a8a29.ctex"]
 
 [params]
 

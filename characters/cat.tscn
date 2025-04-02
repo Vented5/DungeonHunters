@@ -1,14 +1,42 @@
-[gd_scene load_steps=6 format=3 uid="uid://dxj7wq2dl1l1h"]
+[gd_scene load_steps=19 format=3 uid="uid://dxj7wq2dl1l1h"]
 
 [ext_resource type="Script" path="res://characters/cat.gd" id="1_otise"]
 [ext_resource type="Texture2D" uid="uid://cy4nshp4d4px5" path="res://art/cat.png" id="2_d6xhs"]
+[ext_resource type="Texture2D" uid="uid://c2d03mrtmh4jf" path="res://art/cat/Attack/Attack - copiaGato2 - copia 2.png" id="2_mxtg6"]
+[ext_resource type="Texture2D" uid="uid://lqc7m8kwthaq" path="res://art/cat/Attack/Attack - copiaGato2 - copia 3a.png" id="3_3cmq5"]
+[ext_resource type="Texture2D" uid="uid://cu65inehbfoqv" path="res://art/cat/Attack/Attack - copiaGato2 - copia 3b.png" id="4_l4sn7"]
+[ext_resource type="Texture2D" uid="uid://caudknprfo7db" path="res://art/cat/Attack/Attack - copiaGato2 - copia 4.png" id="5_5dnbk"]
+[ext_resource type="Texture2D" uid="uid://bf01anqeuspr3" path="res://art/cat/Attack/Attack - copiaGato2 - copia 5.png" id="6_qaefs"]
+[ext_resource type="Texture2D" uid="uid://cyrj8egu5vsoj" path="res://art/cat/Walk/Carpeta 1 - copiaGato2 - copia 6.png" id="8_plwlp"]
+[ext_resource type="Texture2D" uid="uid://bptm1j8mcpebo" path="res://art/cat/Walk/Carpeta 1 - copiaGato2 - copia 7.png" id="9_wcy5i"]
+[ext_resource type="Texture2D" uid="uid://df11mcjdeadb6" path="res://art/cat/Walk/Carpeta 1 - copiaGato2 - copia 8.png" id="10_e3ykp"]
+[ext_resource type="Texture2D" uid="uid://dcjiqvg85f3ed" path="res://art/cat/Walk/Carpeta 1 - copiaGato2 - copia 9.png" id="11_p22wi"]
+[ext_resource type="Texture2D" uid="uid://bslcj52v8wusb" path="res://art/cat/Walk/Carpeta 1 - copiaGato2 - copia 10.png" id="12_iyowc"]
+[ext_resource type="Texture2D" uid="uid://ry0gyfa7iyag" path="res://art/cat/Walk/Carpeta 1 - copiaGato2 - copia 11.png" id="13_02y5t"]
+[ext_resource type="Texture2D" uid="uid://bh7btapi3m472" path="res://art/cat/Walk/Carpeta 1 - copiaGato2 - copia 12.png" id="14_q8kh2"]
+[ext_resource type="AudioStream" uid="uid://dp0wtvu7g1k8x" path="res://sound/weapons sound/bow_sound.ogg" id="15_a41ov"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_f5lbm"]
 animations = [{
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_mxtg6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_5dnbk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_qaefs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_3cmq5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_l4sn7")
+}],
 "loop": false,
 "name": &"attack",
-"speed": 3.0
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -18,7 +46,37 @@ animations = [{
 "name": &"default",
 "speed": 5.0
 }, {
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_plwlp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_wcy5i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_e3ykp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_p22wi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_iyowc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_02y5t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_q8kh2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_p22wi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_iyowc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_02y5t")
+}],
 "loop": true,
 "name": &"walk",
 "speed": 5.0
@@ -34,14 +92,14 @@ radius = 151.271
 [node name="Cat" type="CharacterBody2D"]
 script = ExtResource("1_otise")
 
+[node name="Marker2D" type="Marker2D" parent="."]
+
 [node name="Animation" type="AnimatedSprite2D" parent="."]
 z_index = 1
 sprite_frames = SubResource("SpriteFrames_f5lbm")
-animation = &"walk"
-
-[node name="Animation" type="AnimatedSprite2D" parent="Animation"]
-z_index = 1
-sprite_frames = SubResource("SpriteFrames_f5lbm")
+animation = &"attack"
+frame = 4
+frame_progress = 1.0
 
 [node name="Hitbox" type="Area2D" parent="."]
 position = Vector2(0, 23)
@@ -49,7 +107,7 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-position = Vector2(3.8147e-06, 92)
+position = Vector2(-1.77351e-11, 57)
 rotation = 1.5708
 scale = Vector2(0.8, 0.832)
 shape = SubResource("CapsuleShape2D_ggklp")
@@ -72,5 +130,8 @@ offset_top = -213.0
 offset_right = 20.0
 offset_bottom = -190.0
 text = "< ID >"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("15_a41ov")
 
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]

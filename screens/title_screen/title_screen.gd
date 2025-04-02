@@ -6,6 +6,7 @@ extends Node
 var character_selection = "res://screens/character_selection/character_selection_screen.tscn"
 
 func _ready() -> void:
+	$Select.play()
 	join_btn.pressed.connect(_on_join_pressed)
 	$Welcome/Timer.start()
 

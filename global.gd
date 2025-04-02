@@ -9,7 +9,10 @@ var game_mode = "server"
 
 var tag = ""
 
+
+
 func _ready():
+
 	if OS.has_feature("dedicated_server"):
 		print("Starting a dedicated server...")
 		Multiplayer.create_server()

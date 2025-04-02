@@ -20,7 +20,10 @@ func handle_attack():
 		$Animation.offset = Vector2(105, 0)
 		$Attack_hitbox/CollisionShape2D.position.x = 119
 	$Animation.play("attack")
-	await get_tree().create_timer(1.4).timeout
+	await get_tree().create_timer(0.6).timeout
+	$Jump.play()
+	await get_tree().create_timer(0.8).timeout
+	$Attack.play()
 	$Attack_hitbox.show()
 	$Attack_hitbox.collision_layer = 3
 	

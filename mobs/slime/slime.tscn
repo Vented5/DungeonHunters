@@ -1,14 +1,35 @@
-[gd_scene load_steps=11 format=3 uid="uid://dq1vsa5w8gn5o"]
+[gd_scene load_steps=15 format=3 uid="uid://dq1vsa5w8gn5o"]
 
 [ext_resource type="Script" path="res://mobs/slime/slime.gd" id="1_a1gr5"]
 [ext_resource type="Texture2D" uid="uid://cweghpj2grbqa" path="res://mobs/slime/sprites/1.png" id="1_hppst"]
-[ext_resource type="Texture2D" uid="uid://dajsnavfjtykx" path="res://mobs/slime/sprites/2.png" id="2_481ba"]
-[ext_resource type="Texture2D" uid="uid://38jq4dy2ahsk" path="res://mobs/slime/sprites/3.png" id="3_l7a5k"]
-[ext_resource type="Texture2D" uid="uid://cx1xpmrw4bomh" path="res://mobs/slime/sprites/4.png" id="4_mpmaj"]
+[ext_resource type="Texture2D" uid="uid://dsyvrbpxbdhli" path="res://mobs/slime/sprites/Slime2.png" id="2_0qsba"]
+[ext_resource type="Texture2D" uid="uid://dajsnavfjtykx" path="res://mobs/slime/sprites/Walk/2.png" id="2_481ba"]
+[ext_resource type="Texture2D" uid="uid://38jq4dy2ahsk" path="res://mobs/slime/sprites/Walk/3.png" id="3_l7a5k"]
+[ext_resource type="Texture2D" uid="uid://bacphwxvqeels" path="res://mobs/slime/sprites/Slime.png" id="3_ppaf7"]
+[ext_resource type="Texture2D" uid="uid://cx1xpmrw4bomh" path="res://mobs/slime/sprites/Walk/4.png" id="4_mpmaj"]
 [ext_resource type="PackedScene" uid="uid://cqy2kaeptmwos" path="res://ui/health_bar.tscn" id="6_701h3"]
+[ext_resource type="AudioStream" uid="uid://dvoimlqy5ksac" path="res://mobs/slime/cartoon-splat-6086.mp3" id="9_rof1a"]
+[ext_resource type="AudioStream" uid="uid://bsh11m3q35tb7" path="res://mobs/slime/cartoon-splat-310479.mp3" id="10_mg0h6"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_p86m6"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_0qsba")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ppaf7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_0qsba")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ppaf7")
+}],
+"loop": true,
+"name": &"hit",
+"speed": 4.0
+}, {
 "frames": [{
 "duration": 2.0,
 "texture": ExtResource("1_hppst")
@@ -61,8 +82,7 @@ script = ExtResource("1_a1gr5")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.8, 0.8)
 sprite_frames = SubResource("SpriteFrames_p86m6")
-animation = &"move"
-frame_progress = 0.571026
+animation = &"hit"
 offset = Vector2(0, -20)
 
 [node name="Area2D" type="Area2D" parent="."]
@@ -101,6 +121,14 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 12
 theme_override_font_sizes/font_size = 20
 text = "2000"
+
+[node name="Hit" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_rof1a")
+volume_db = -7.428
+
+[node name="Die" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_mg0h6")
+volume_db = -7.428
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

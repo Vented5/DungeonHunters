@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cbjxjjnfx4xps"
+path="res://.godot/imported/select-menu-47560.mp3-9fb75914a7a652bbc0bf0d747df73d66.mp3str"
+
+[deps]
+
+source_file="res://sound/magic sounds/select-menu-47560.mp3"
+dest_files=["res://.godot/imported/select-menu-47560.mp3-9fb75914a7a652bbc0bf0d747df73d66.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

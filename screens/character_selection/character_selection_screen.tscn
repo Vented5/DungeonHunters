@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://n5tyx1txglnt"]
+[gd_scene load_steps=7 format=3 uid="uid://n5tyx1txglnt"]
 
 [ext_resource type="Script" path="res://screens/character_selection/character_selection_screen.gd" id="1_jceqb"]
 [ext_resource type="Texture2D" uid="uid://bq81mc50hmv6o" path="res://art/bear.png" id="2_o7awh"]
-[ext_resource type="Theme" uid="uid://qoufyw1po8w3" path="res://themes/secondary_button.tres" id="3_7t5bc"]
-[ext_resource type="Theme" uid="uid://bq3k02vai70n2" path="res://themes/button.tres" id="3_amluj"]
+[ext_resource type="Theme" uid="uid://qoufyw1po8w3" path="res://ui/themes/secondary_button.tres" id="3_7t5bc"]
+[ext_resource type="Theme" uid="uid://bq3k02vai70n2" path="res://ui/themes/button.tres" id="3_amluj"]
+[ext_resource type="AudioStream" uid="uid://rj3hhikwok73" path="res://sound/music/select-menu-47560.mp3" id="5_wd0ie"]
+[ext_resource type="AudioStream" uid="uid://d1clulf0t5fjc" path="res://sound/music/minimal-pop-click-ui-4-198304.mp3" id="6_vcgal"]
 
 [node name="Character_selection_screen" type="Node"]
 script = ExtResource("1_jceqb")
@@ -100,7 +102,6 @@ theme_override_font_sizes/font_size = 24
 text = "START"
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
-_spawnable_scenes = PackedStringArray("res://player/player.tscn")
 spawn_path = NodePath("..")
 
 [node name="Back" type="Button" parent="."]
@@ -110,6 +111,13 @@ offset_right = 180.0
 offset_bottom = 85.0
 theme = ExtResource("3_7t5bc")
 text = "< Back"
+
+[node name="Select" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_wd0ie")
+
+[node name="Select2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_vcgal")
+volume_db = -9.904
 
 [connection signal="pressed" from="Next character" to="." method="_on_next_character_pressed"]
 [connection signal="pressed" from="Prev character" to="." method="_on_prev_character_pressed"]

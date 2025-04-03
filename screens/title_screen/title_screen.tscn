@@ -16,33 +16,6 @@ font_size = 24
 outline_size = 12
 outline_color = Color(0, 0, 0, 1)
 
-[sub_resource type="LabelSettings" id="LabelSettings_sebjf"]
-font_size = 24
-outline_size = 12
-outline_color = Color(0, 0, 0, 1)
-
-[sub_resource type="LabelSettings" id="LabelSettings_l877a"]
-font_size = 32
-outline_size = 16
-outline_color = Color(0, 0, 0, 1)
-
-[sub_resource type="Animation" id="Animation_teq32"]
-resource_name = "new_animation"
-length = 1.5
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:label_settings")
-tracks/0/interp = 0
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(-0.0667, 0, 0.66, 1.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [SubResource("LabelSettings_sebjf"), SubResource("LabelSettings_sr53h"), SubResource("LabelSettings_l877a"), SubResource("LabelSettings_sr53h")]
-}
-
 [sub_resource type="Animation" id="Animation_xu7xa"]
 length = 1.5
 loop_mode = 1
@@ -69,6 +42,33 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 0,
 "values": [-0.436332, -0.261799, 0.0, -0.261799, 0.0, -0.436332]
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_sebjf"]
+font_size = 24
+outline_size = 12
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_l877a"]
+font_size = 32
+outline_size = 16
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_teq32"]
+resource_name = "new_animation"
+length = 1.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:label_settings")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(-0.0667, 0, 0.66, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [SubResource("LabelSettings_sebjf"), SubResource("LabelSettings_sr53h"), SubResource("LabelSettings_l877a"), SubResource("LabelSettings_sr53h")]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_bc4qi"]

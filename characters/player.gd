@@ -2,8 +2,8 @@ extends CharacterBody2D
 class_name Player
 
 var joystick
-@export var health : int = 4
-@export var speed = 300
+@export var health : int = 5
+@export var speed = 500
 var direction = Vector2.ZERO
 signal hit
 signal die

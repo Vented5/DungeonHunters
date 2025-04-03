@@ -1,9 +1,8 @@
-[gd_scene load_steps=15 format=3 uid="uid://cht2ngyuph4ad"]
+[gd_scene load_steps=14 format=3 uid="uid://cht2ngyuph4ad"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_mtfga"]
 [ext_resource type="PackedScene" uid="uid://dq1vsa5w8gn5o" path="res://mobs/slime/slime.tscn" id="3_ultmg"]
 [ext_resource type="Texture2D" uid="uid://ri4h47dj2eer" path="res://art/background.jpg" id="3_v6a1s"]
-[ext_resource type="PackedScene" uid="uid://bdjh8bek015m1" path="res://mobs/golem/golem.tscn" id="4_omhyb"]
 [ext_resource type="Texture2D" uid="uid://cw543fi4x2eta" path="res://ui/battle.svg" id="7_fomfm"]
 [ext_resource type="PackedScene" uid="uid://cqy2kaeptmwos" path="res://ui/health_bar.tscn" id="7_lace4"]
 [ext_resource type="Theme" uid="uid://duj6yf803sxe4" path="res://ui/joystick/themes/idle.tres" id="7_r28ph"]
@@ -182,10 +181,6 @@ volume_db = -12.735
 [node name="Game_over_sound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10_0pjwi")
 volume_db = -15.211
-
-[node name="Golem" parent="." instance=ExtResource("4_omhyb")]
-position = Vector2(1361, -24)
-scale = Vector2(3.6, 3)
 
 [node name="Select" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("12_njtoa")

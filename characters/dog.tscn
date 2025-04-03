@@ -6,8 +6,8 @@
 [ext_resource type="AudioStream" uid="uid://dsn2fxw6a2t5n" path="res://sound/weapons sound/rapid-wind-sound-effect-1-108398.mp3" id="4_lsch0"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pnfu6"]
-radius = 20.0
-height = 96.1538
+radius = 16.25
+height = 62.5
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_s7tve"]
 radius = 151.271
@@ -41,6 +41,8 @@ z_index = 1
 scale = Vector2(0.817442, 0.817442)
 sprite_frames = ExtResource("2_yhimo")
 animation = &"attack"
+frame = 7
+frame_progress = 1.0
 
 [node name="Hitbox" type="Area2D" parent="."]
 position = Vector2(0, 23)
@@ -48,7 +50,7 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-position = Vector2(5.68434e-14, 16)
+position = Vector2(2.78533e-12, 28)
 rotation = 1.5708
 scale = Vector2(0.8, 0.832)
 shape = SubResource("CapsuleShape2D_pnfu6")

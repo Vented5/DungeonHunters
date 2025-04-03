@@ -11,6 +11,7 @@ var stun = false
 
 
 func _ready():	
+	speed = randi_range(100, 150)
 	if !OS.has_feature("dedicated_server"):
 		healthbar = $HealthBar
 		healthbar.init_health(health)

@@ -31,7 +31,8 @@ func _on_request_completed(res, res_code, headers, body):
 	print(json)
 	if json:
 		if json.message:
-			$Game_over/Label.text = json.message 
+			pass
+			#$Game_over/Label.text = json.message 
 
 func game_start():
 	$AudioStreamPlayer.play()
@@ -41,7 +42,7 @@ func game_start():
 		rpc("spawn_player", i)
 	score = 0
 	$Slime_timer.start()
-	$Golem/AnimatedSprite2D.play("smash")
+	#$Golem/AnimatedSprite2D.play("smash")
 
 
 func _process(_delta: float) -> void:

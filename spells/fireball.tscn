@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://drem48yx3qbei"]
+[gd_scene load_steps=6 format=3 uid="uid://drem48yx3qbei"]
 
 [ext_resource type="Script" path="res://spells/fireball.gd" id="1_bylai"]
 [ext_resource type="Texture2D" uid="uid://cxohpkkjtb7rd" path="res://spells/Fireball.png" id="1_jn2fw"]
@@ -6,6 +6,11 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rxoyl"]
 radius = 54.0093
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_vvwph"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 2
 
 [node name="Fireball" type="Area2D"]
 collision_layer = 8
@@ -23,6 +28,9 @@ debug_color = Color(0, 0.646717, 0.230122, 0.42)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_i7tma")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_vvwph")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

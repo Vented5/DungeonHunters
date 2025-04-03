@@ -1,27 +1,80 @@
-[gd_scene load_steps=6 format=3 uid="uid://b0o5pvmg0iewr"]
+[gd_scene load_steps=16 format=3 uid="uid://b0o5pvmg0iewr"]
 
 [ext_resource type="Script" path="res://characters/fox.gd" id="1_o7mcc"]
-[ext_resource type="Texture2D" uid="uid://c8m2dsm5l6pmc" path="res://art/fox.png" id="2_ml3yk"]
+[ext_resource type="Texture2D" uid="uid://batqlit73m50b" path="res://art/zorro/Attack/Ilustración2.png" id="2_a0xud"]
+[ext_resource type="Texture2D" uid="uid://bsk4ejh83grct" path="res://art/zorro/Attack/Carpeta 1 - copia1.png" id="2_x6jhe"]
+[ext_resource type="Texture2D" uid="uid://dl0y00xabgjxc" path="res://art/zorro/Attack/Carpeta 1 - copia2.png" id="3_f53kw"]
+[ext_resource type="Texture2D" uid="uid://dy37ddyer6len" path="res://art/zorro/Attack/Carpeta 1 - copia3.png" id="4_vfvt8"]
+[ext_resource type="Texture2D" uid="uid://063htmjv2q0c" path="res://art/zorro/Attack/Carpeta 1 - copiaCapa 2.png" id="5_qhalu"]
+[ext_resource type="AudioStream" uid="uid://cph4spt0t7y87" path="res://sound/zorrito.wav" id="7_y7oho"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_uuv6m"]
+load_path = "res://.godot/imported/Carpeta 2 - copiaCapa 4.png-7d3cf3e86ff937518b4f22eff46759ed.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ahj1m"]
+load_path = "res://.godot/imported/Carpeta 2 - copiaCapa 5.png-a66c820f3bbb33ba44382cdbabd255f5.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_c1opu"]
+load_path = "res://.godot/imported/Carpeta 2 - copiaCapa 6.png-74123c396cfa8f9cfdbbbe9215356bb0.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_p74j2"]
+load_path = "res://.godot/imported/Carpeta 2 - copiaCapa 7.png-680ba2f9f1820813107650793e74477f.ctex"
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_nwe14"]
 animations = [{
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_a0xud")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_f53kw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_vfvt8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_qhalu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_x6jhe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_f53kw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_vfvt8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_qhalu")
+}],
 "loop": false,
 "name": &"attack",
-"speed": 3.0
+"speed": 4.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_ml3yk")
+"texture": SubResource("CompressedTexture2D_uuv6m")
 }],
 "loop": true,
 "name": &"default",
 "speed": 5.0
 }, {
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("CompressedTexture2D_uuv6m")
+}, {
+"duration": 1.0,
+"texture": SubResource("CompressedTexture2D_ahj1m")
+}, {
+"duration": 1.0,
+"texture": SubResource("CompressedTexture2D_c1opu")
+}, {
+"duration": 1.0,
+"texture": SubResource("CompressedTexture2D_p74j2")
+}],
 "loop": true,
 "name": &"walk",
-"speed": 5.0
+"speed": 4.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_h507q"]
@@ -31,6 +84,20 @@ height = 120.192
 [sub_resource type="CircleShape2D" id="CircleShape2D_1r6p3"]
 radius = 151.271
 
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_28kuv"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 2
+properties/1/path = NodePath("Animation:flip_h")
+properties/1/spawn = true
+properties/1/replication_mode = 2
+properties/2/path = NodePath("Animation:frame")
+properties/2/spawn = true
+properties/2/replication_mode = 2
+properties/3/path = NodePath("Animation:animation")
+properties/3/spawn = true
+properties/3/replication_mode = 2
+
 [node name="Fox" type="CharacterBody2D"]
 script = ExtResource("1_o7mcc")
 
@@ -38,11 +105,8 @@ script = ExtResource("1_o7mcc")
 z_index = 1
 sprite_frames = SubResource("SpriteFrames_nwe14")
 animation = &"walk"
-
-[node name="Animation" type="AnimatedSprite2D" parent="Animation"]
-z_index = 1
-sprite_frames = SubResource("SpriteFrames_nwe14")
-animation = &"attack"
+frame = 1
+frame_progress = 0.136681
 
 [node name="Hitbox" type="Area2D" parent="."]
 position = Vector2(0, 23)
@@ -69,9 +133,15 @@ debug_color = Color(7.41214e-06, 0.588662, 0.760996, 0.42)
 
 [node name="Label" type="Label" parent="."]
 offset_left = -24.0
-offset_top = -213.0
+offset_top = -163.0
 offset_right = 20.0
-offset_bottom = -190.0
+offset_bottom = -140.0
 text = "< ID >"
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." groups=["Characters"]]
+replication_config = SubResource("SceneReplicationConfig_28kuv")
+
+[node name="fox_sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_y7oho")
 
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]

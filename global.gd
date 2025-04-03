@@ -7,7 +7,7 @@ var weapon_scene_path = "res://weapons/sword.tscn"
 var save_path = "user://save_game.dat"
 var game_mode = "server"
 
-var tag = ""
+var tag = "ElJavi"
 
 
 

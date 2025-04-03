@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://dxj7wq2dl1l1h"]
+[gd_scene load_steps=21 format=3 uid="uid://dxj7wq2dl1l1h"]
 
 [ext_resource type="Script" path="res://characters/cat.gd" id="1_otise"]
 [ext_resource type="Texture2D" uid="uid://cy4nshp4d4px5" path="res://art/cat.png" id="2_d6xhs"]
@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://ry0gyfa7iyag" path="res://art/cat/Walk/Carpeta 1 - copiaGato2 - copia 11.png" id="13_02y5t"]
 [ext_resource type="Texture2D" uid="uid://bh7btapi3m472" path="res://art/cat/Walk/Carpeta 1 - copiaGato2 - copia 12.png" id="14_q8kh2"]
 [ext_resource type="AudioStream" uid="uid://dp0wtvu7g1k8x" path="res://sound/weapons sound/bow_sound.ogg" id="15_a41ov"]
+[ext_resource type="AudioStream" uid="uid://86mj3gy7odt4" path="res://sound/meowing_cat.mp3" id="16_birxg"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_f5lbm"]
 animations = [{
@@ -89,6 +90,20 @@ height = 120.192
 [sub_resource type="CircleShape2D" id="CircleShape2D_wjo0n"]
 radius = 151.271
 
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_eucer"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 2
+properties/1/path = NodePath("Animation:flip_h")
+properties/1/spawn = true
+properties/1/replication_mode = 2
+properties/2/path = NodePath("Animation:frame")
+properties/2/spawn = true
+properties/2/replication_mode = 2
+properties/3/path = NodePath("Animation:animation")
+properties/3/spawn = true
+properties/3/replication_mode = 2
+
 [node name="Cat" type="CharacterBody2D"]
 script = ExtResource("1_otise")
 
@@ -133,5 +148,12 @@ text = "< ID >"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("15_a41ov")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." groups=["Characters"]]
+replication_config = SubResource("SceneReplicationConfig_eucer")
+
+[node name="cat_sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("16_birxg")
+volume_db = -6.903
 
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]

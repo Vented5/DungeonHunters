@@ -13,6 +13,7 @@ config_version=5
 config/name="Dungeon Hunters"
 run/main_scene="res://screens/title_screen/title_screen.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
+boot_splash/show_image=false
 config/icon="res://icon.svg"
 
 [autoload]
@@ -25,6 +26,10 @@ Multiplayer="*res://multiplayer.gd"
 window/size/viewport_width=1280
 window/size/viewport_height=720
 window/stretch/mode="canvas_items"
+
+[global_group]
+
+Characters=""
 
 [input]
 

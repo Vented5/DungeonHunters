@@ -6,8 +6,10 @@ func _ready():
 	speed = 600
 	super.init_health()
 	super._ready()
+	$cat_sound.play()
 
 func _process(_delta: float): 
+	if !is_multiplayer_authority(): return
 	super._process(_delta)
 	
 	if Input.is_action_just_pressed("attack") and is_attacking==0:
@@ -18,7 +20,7 @@ func handle_attack(angle):
 	$Animation.play("attack")
 	await get_tree().create_timer(0.6).timeout
 	$AudioStreamPlayer.play()
-	shoot(angle)
+	rpc("shoot", angle)
 	
 	await $Animation.animation_finished
 	#await get_tree().create_timer(1.6).timeout
@@ -27,12 +29,12 @@ func handle_attack(angle):
 	$Animation.offset = Vector2.ZERO
 	
 
-@rpc("call_local", "unreliable")
+@rpc("call_local","reliable")
 func shoot(angle):
 	var arrow = arrow_scene.instantiate()
 	$Marker2D.rotation = angle
 	arrow.transform = $Marker2D.global_transform
-	get_parent().get_parent().add_child(arrow)
+	get_parent().add_child(arrow)
 
 
 func _on_hitbox_area_entered(area: Area2D) -> void:

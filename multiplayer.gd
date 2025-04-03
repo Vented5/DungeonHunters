@@ -5,7 +5,7 @@ signal player_disconnected(peer_id)
 signal server_disconnected
 
 const PORT = 7769
-const DEFAULT_SERVER_IP = "127.0.0.1"#"luckysw.xyz"#192.168.0.2"#172.17.0.2"###"26.68.79.202"#
+const DEFAULT_SERVER_IP = "192.168.0.2"#"127.0.0.1"#"luckysw.xyz"#192.168.0.2"#172.17.0.2"###"26.68.79.202"#
 const MAX_CONECTIONS = 4
 
 var players = {}
@@ -26,7 +26,6 @@ func _ready():
 	add_child(music_player)
 	music_player.play()
 	
-
 func create_server():
 	var peer = ENetMultiplayerPeer.new()
 	

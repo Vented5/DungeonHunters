@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://inwok8opmp4w"]
+
+[ext_resource type="Script" path="res://ui/touch_screen_button_2.gd" id="1_rojiu"]
+[ext_resource type="Texture2D" uid="uid://ph8bjtvv1od2" path="res://art/Fireball.png" id="2_s6lwi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3s3mi"]
+size = Vector2(640, 720)
+
+[node name="TouchScreenButton2" type="TouchScreenButton"]
+position = Vector2(958, 360)
+shape = SubResource("RectangleShape2D_3s3mi")
+action = "draw"
+script = ExtResource("1_rojiu")
+
+[node name="Fireball" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(226, -241)
+scale = Vector2(0.646953, 0.646953)
+texture = ExtResource("2_s6lwi")

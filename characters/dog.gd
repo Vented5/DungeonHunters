@@ -6,6 +6,7 @@ func _ready():
 	super._ready()
 
 func _process(_delta: float): 
+	if !is_multiplayer_authority(): return
 	super._process(_delta)
 	
 	if Input.is_action_just_pressed("attack") and is_attacking==0:

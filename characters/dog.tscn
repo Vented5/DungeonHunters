@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://deeitfmmj4pm8"]
+[gd_scene load_steps=8 format=3 uid="uid://deeitfmmj4pm8"]
 
 [ext_resource type="Script" path="res://characters/dog.gd" id="1_6x4jh"]
 [ext_resource type="SpriteFrames" uid="uid://d3thsrgrvutas" path="res://art/hd_dogo/player.tres" id="2_yhimo"]
@@ -11,6 +11,20 @@ height = 96.1538
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_s7tve"]
 radius = 151.271
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_nd7l3"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 2
+properties/1/path = NodePath("Animation:flip_h")
+properties/1/spawn = true
+properties/1/replication_mode = 2
+properties/2/path = NodePath("Animation:frame")
+properties/2/spawn = true
+properties/2/replication_mode = 2
+properties/3/path = NodePath("Animation:animation")
+properties/3/spawn = true
+properties/3/replication_mode = 2
 
 [node name="Dog" type="CharacterBody2D"]
 script = ExtResource("1_6x4jh")
@@ -58,5 +72,8 @@ volume_db = -11.142
 [node name="Jump" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_lsch0")
 volume_db = -7.427
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." groups=["Characters"]]
+replication_config = SubResource("SceneReplicationConfig_nd7l3")
 
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]

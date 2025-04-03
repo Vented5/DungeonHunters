@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://screens/character_selection/character_selection_screen.gd" id="1_jceqb"]
 [ext_resource type="Texture2D" uid="uid://bq81mc50hmv6o" path="res://art/bear.png" id="2_o7awh"]
-[ext_resource type="Theme" uid="uid://qoufyw1po8w3" path="res://ui/themes/secondary_button.tres" id="3_7t5bc"]
-[ext_resource type="Theme" uid="uid://bq3k02vai70n2" path="res://ui/themes/button.tres" id="3_amluj"]
+[ext_resource type="Theme" uid="uid://qoufyw1po8w3" path="res://ui/joystick/themes/secondary_button.tres" id="3_7t5bc"]
+[ext_resource type="Theme" uid="uid://bq3k02vai70n2" path="res://ui/joystick/themes/button.tres" id="3_amluj"]
 [ext_resource type="AudioStream" uid="uid://rj3hhikwok73" path="res://sound/music/select-menu-47560.mp3" id="5_wd0ie"]
 [ext_resource type="AudioStream" uid="uid://d1clulf0t5fjc" path="res://sound/music/minimal-pop-click-ui-4-198304.mp3" id="6_vcgal"]
 
@@ -122,5 +122,5 @@ volume_db = -9.904
 [connection signal="pressed" from="Next character" to="." method="_on_next_character_pressed"]
 [connection signal="pressed" from="Prev character" to="." method="_on_prev_character_pressed"]
 [connection signal="pressed" from="Start" to="." method="_on_start_pressed"]
-[connection signal="pressed" from="Back" to="." method="_on_back_pressed"]
 [connection signal="pressed" from="Back" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Back" to="." method="_on_back_pressed"]

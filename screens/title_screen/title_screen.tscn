@@ -1,8 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://fybtkxym01xo"]
+[gd_scene load_steps=13 format=3 uid="uid://fybtkxym01xo"]
 
 [ext_resource type="Script" path="res://screens/title_screen/title_screen.gd" id="1_qc3g2"]
 [ext_resource type="Texture2D" uid="uid://bk5we4480gkw2" path="res://art/wawa.jpg" id="2_hw1jq"]
-[ext_resource type="Theme" uid="uid://bq3k02vai70n2" path="res://ui/themes/button.tres" id="3_exc8f"]
+[ext_resource type="Theme" uid="uid://bq3k02vai70n2" path="res://ui/joystick/themes/button.tres" id="3_exc8f"]
 [ext_resource type="AudioStream" uid="uid://rj3hhikwok73" path="res://sound/music/select-menu-47560.mp3" id="5_q8gu1"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rjkp8"]
@@ -10,6 +10,72 @@ bg_color = Color(0.322308, 0.425675, 0.14066, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bf30l"]
 bg_color = Color(0.363431, 0.619557, 0.16324, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_sr53h"]
+font_size = 24
+outline_size = 12
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_sebjf"]
+font_size = 24
+outline_size = 12
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_l877a"]
+font_size = 32
+outline_size = 16
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_teq32"]
+resource_name = "new_animation"
+length = 1.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:label_settings")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(-0.0667, 0, 0.66, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [SubResource("LabelSettings_sebjf"), SubResource("LabelSettings_sr53h"), SubResource("LabelSettings_l877a"), SubResource("LabelSettings_sr53h")]
+}
+
+[sub_resource type="Animation" id="Animation_xu7xa"]
+length = 1.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.3, 0.4, 0.566667, 0.733333, 0.866667, 0.957545),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.174533, 0.174533, -0.174533, 0.174533, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../AlsoTryHiveDown:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.266667, 0.366667, 0.533333, 0.7, 0.833333, 0.924212),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [-0.436332, -0.261799, 0.0, -0.261799, 0.0, -0.436332]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bc4qi"]
+_data = {
+"RESET": SubResource("Animation_xu7xa"),
+"new_animation": SubResource("Animation_teq32")
+}
 
 [node name="Title_screen" type="Node"]
 script = ExtResource("1_qc3g2")
@@ -62,6 +128,9 @@ offset_left = 544.0
 offset_top = 48.0
 offset_right = 1192.0
 offset_bottom = 144.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 6
+theme_override_constants/shadow_offset_y = 5
 theme_override_font_sizes/font_size = 64
 text = "DUNGEON HUNTERS"
 horizontal_alignment = 1
@@ -182,10 +251,13 @@ text = "Dedicated Servers"
 [node name="HBoxContainer" type="HBoxContainer" parent="Server_list/ColorRect/Label/VBoxContainer"]
 layout_mode = 2
 
-[node name="Label3" type="Label" parent="Server_list/ColorRect/Label/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(360, 0)
+[node name="LineEdit" type="LineEdit" parent="Server_list/ColorRect/Label/VBoxContainer/HBoxContainer"]
 layout_mode = 2
-text = "LomyCalipse"
+theme_override_font_sizes/font_size = 32
+text = "LEIZER"
+placeholder_text = "####"
+alignment = 1
+max_length = 6
 
 [node name="Button" type="Button" parent="Server_list/ColorRect/Label/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(120, 0)
@@ -195,6 +267,45 @@ text = "Join"
 
 [node name="Select" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_q8gu1")
+
+[node name="AlsoTryHiveDown" type="Label" parent="."]
+custom_minimum_size = Vector2(360, 0)
+offset_left = 97.0
+offset_top = 160.0
+offset_right = 457.0
+offset_bottom = 205.0
+rotation = -0.436332
+pivot_offset = Vector2(176, 19)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 16
+theme_override_font_sizes/font_size = 32
+text = "Also try HiveDown <X"
+label_settings = SubResource("LabelSettings_sr53h")
+horizontal_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AlsoTryHiveDown"]
+libraries = {
+"": SubResource("AnimationLibrary_bc4qi")
+}
+autoplay = "new_animation"
+
+[node name="Artby" type="Label" parent="."]
+custom_minimum_size = Vector2(360, 0)
+offset_left = 824.0
+offset_top = 621.0
+offset_right = 1184.0
+offset_bottom = 666.0
+pivot_offset = Vector2(180, 22.5)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "Art by @redakko010 <X"
+horizontal_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Artby"]
+libraries = {
+"": SubResource("AnimationLibrary_bc4qi")
+}
+autoplay = "RESET"
 
 [connection signal="pressed" from="BoxContainer/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="BoxContainer/Host" to="." method="_on_host_pressed"]

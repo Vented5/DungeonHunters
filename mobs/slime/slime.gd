@@ -5,11 +5,12 @@ signal die
 @export var health = 2 : set = _set_health
 var speed = 100
 var direction
-
+var nearest : Vector2
 @onready var healthbar 
 var stun = false
 
-func _ready():
+
+func _ready():	
 	if !OS.has_feature("dedicated_server"):
 		healthbar = $HealthBar
 		healthbar.init_health(health)
@@ -19,12 +20,22 @@ func _ready():
 func _process(delta):
 	if !multiplayer.is_server(): return
 	
-	var player = get_parent().player
-	if player and is_instance_valid(player):
-		direction = get_angle_to(player.position)
-	else: direction = randf()
+	var closest = get_closest()
+	if closest:
+		direction = get_angle_to(closest.position)
 	
-	if !stun: rpc("move", direction)
+	if !stun: move(direction)
+
+func get_closest():
+	var nodo_mas_cercano = null
+	var menor_distancia = INF
+	for nodo in get_tree().get_nodes_in_group("characters"):
+		var distancia = global_position.distance_to(nodo.global_position)
+		if distancia < menor_distancia:
+			menor_distancia = distancia
+			nodo_mas_cercano = nodo
+	return nodo_mas_cercano
+
 
 @rpc("call_local", "any_peer", "unreliable")
 func move(dir):

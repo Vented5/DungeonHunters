@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://da18pqlbdqqdp"
-path="res://.godot/imported/fox.png-37971faff8ea69c8df7a100dd295e2ef.ctex"
+uid="uid://cmah2tsxjblcc"
+path="res://.godot/imported/Carpeta 2 - copiaCapa 7.png-680ba2f9f1820813107650793e74477f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/fox.png"
-dest_files=["res://.godot/imported/fox.png-37971faff8ea69c8df7a100dd295e2ef.ctex"]
+source_file="res://art/zorro/Walk/Carpeta 2 - copiaCapa 7.png"
+dest_files=["res://.godot/imported/Carpeta 2 - copiaCapa 7.png-680ba2f9f1820813107650793e74477f.ctex"]
 
 [params]
 

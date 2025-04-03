@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cht2ngyuph4ad"]
+[gd_scene load_steps=15 format=3 uid="uid://cht2ngyuph4ad"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_mtfga"]
 [ext_resource type="PackedScene" uid="uid://dq1vsa5w8gn5o" path="res://mobs/slime/slime.tscn" id="3_ultmg"]
@@ -6,9 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://bdjh8bek015m1" path="res://mobs/golem/golem.tscn" id="4_omhyb"]
 [ext_resource type="Texture2D" uid="uid://cw543fi4x2eta" path="res://ui/battle.svg" id="7_fomfm"]
 [ext_resource type="PackedScene" uid="uid://cqy2kaeptmwos" path="res://ui/health_bar.tscn" id="7_lace4"]
-[ext_resource type="Theme" uid="uid://duj6yf803sxe4" path="res://ui/themes/idle.tres" id="7_r28ph"]
+[ext_resource type="Theme" uid="uid://duj6yf803sxe4" path="res://ui/joystick/themes/idle.tres" id="7_r28ph"]
 [ext_resource type="PackedScene" uid="uid://cn0oait4m0s65" path="res://ui/joystick/joystick.tscn" id="8_e1ji3"]
-[ext_resource type="Script" path="res://ui/touch_screen_button_2.gd" id="8_xkbxb"]
 [ext_resource type="AudioStream" uid="uid://dgsbu570kc8jo" path="res://sound/music/cancel-36118.mp3" id="10_0pjwi"]
 [ext_resource type="AudioStream" uid="uid://bjyjuoihqgjnb" path="res://sound/music/battle_song.wav" id="10_0434j"]
 [ext_resource type="AudioStream" uid="uid://rj3hhikwok73" path="res://sound/music/select-menu-47560.mp3" id="12_njtoa"]
@@ -29,9 +28,6 @@ shadow_color = Color(0.00139673, 0.00139673, 0.00139673, 0)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_etmht"]
 radius = 527.06
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_3s3mi"]
-size = Vector2(640, 720)
 
 [node name="Main" type="Node"]
 script = ExtResource("1_mtfga")
@@ -98,13 +94,6 @@ offset_right = 171.0
 offset_bottom = 47.0
 text = "< Player  name>"
 
-[node name="TouchScreenButton2" type="TouchScreenButton" parent="HUD"]
-position = Vector2(958, 360)
-shape = SubResource("RectangleShape2D_3s3mi")
-shape_visible = false
-action = "draw"
-script = ExtResource("8_xkbxb")
-
 [node name="Game_over" type="CanvasLayer" parent="."]
 visible = false
 
@@ -155,7 +144,6 @@ metadata/_edit_group_ = true
 [node name="New Game" type="Button" parent="Game_over/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("7_r28ph")
-disabled = true
 text = "New Game"
 
 [node name="Title Screen" type="Button" parent="Game_over/VBoxContainer"]
@@ -182,17 +170,18 @@ offset_right = 51.0
 offset_bottom = -65.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 24
+theme_override_colors/font_shadow_color = Color(0.125911, 0.125911, 0.125911, 1)
+theme_override_constants/shadow_outline_size = 12
+theme_override_font_sizes/font_size = 38
 text = "You scored! :  "
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10_0434j")
 volume_db = -12.735
-autoplay = true
 
 [node name="Game_over_sound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10_0pjwi")
-volume_db = -9.021
+volume_db = -15.211
 
 [node name="Golem" parent="." instance=ExtResource("4_omhyb")]
 position = Vector2(1361, -24)
@@ -201,8 +190,13 @@ scale = Vector2(3.6, 3)
 [node name="Select" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("12_njtoa")
 
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("res://spells/fireball.tscn")
+spawn_path = NodePath("..")
+
+[node name="HTTPRequest" type="HTTPRequest" parent="."]
+
 [connection signal="timeout" from="Slime_timer" to="." method="_on_slime_timer_timeout"]
-[connection signal="cast" from="HUD/TouchScreenButton2" to="." method="_on_touch_screen_button_2_cast"]
 [connection signal="pressed" from="Game_over/VBoxContainer/New Game" to="." method="_on_new_game_pressed"]
 [connection signal="pressed" from="Game_over/VBoxContainer/Title Screen" to="." method="_on_title_screen_pressed"]
 [connection signal="pressed" from="Game_over/VBoxContainer/Exit game" to="." method="_on_exit_game_pressed"]

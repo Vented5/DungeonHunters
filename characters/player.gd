@@ -13,12 +13,12 @@ var is_attacking = 0
 var music_player = AudioStreamPlayer.new()
 
 func _ready():
-	set_multiplayer_authority(1)
+	add_to_group("characters")
+	#set_multiplayer_authority(1)
 	joystick = get_node("../HUD/Joystick")
 	#set_multiplayer_authority(name.to_int())
 	print(Global.game_mode, " New player created: ", name)
-	$Label.text = name		
-
+	$Label.text = name
 	
 	if get_multiplayer_authority() == multiplayer.get_unique_id():
 		add_child(Camera2D.new())

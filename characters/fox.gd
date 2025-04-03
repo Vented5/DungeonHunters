@@ -4,34 +4,24 @@ func _ready():
 	speed = 500
 	super.init_health()
 	super._ready()
+	$fox_sound.play()
 
 func _process(_delta: float): 
+	if !is_multiplayer_authority(): return
 	super._process(_delta)
-	
-	if Input.is_action_just_pressed("attack") and is_attacking==0:
+	if Input.is_action_just_released("draw"):
 		handle_attack()
+	
+	#if Input.is_action_just_pressed("attack") and is_attacking==0:
+	#	handle_attack()
 
 func handle_attack():
 	is_attacking = 1
-	if $Animation.flip_h: 
-		$Animation.offset = Vector2(-105, 0)
-		$Attack_hitbox/CollisionShape2D.position.x = -119
-	else: 
-		$Animation.offset = Vector2(105, 0)
-		$Attack_hitbox/CollisionShape2D.position.x = 119
 	$Animation.play("attack")
-	await get_tree().create_timer(1.4).timeout
-	$Attack_hitbox.show()
-	$Attack_hitbox.collision_layer = 3
-	
 	await $Animation.animation_finished
-	#await get_tree().create_timer(1.6).timeout
-	$Attack_hitbox.collision_layer = 0
-	$Attack_hitbox.hide()
+
 	$Animation.stop()
 	is_attacking = 0
-	$Animation.offset = Vector2.ZERO
-	
 
 
 func _on_hitbox_area_entered(area: Area2D) -> void:

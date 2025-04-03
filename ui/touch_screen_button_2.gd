@@ -5,7 +5,8 @@ signal cast
 var new_line : Vector2
 var last_line : Vector2 = Vector2.ZERO
 var lines = []
-var drawing = [] 
+#var drawing = []
+var drawing : String = "" 
 var last_direction = 0
 
 @onready var shape_rect : Rect2 = Rect2(position.x - shape.size.x/2, position.y - shape.size.y/2, self.shape.size.x, shape.size.y)
@@ -16,7 +17,8 @@ func _process(delta: float) -> void:
 		last_line = Vector2.ZERO
 		print("Hechizo casteado: ", drawing)
 		cast.emit(drawing)
-		drawing.clear()
+		#drawing.clear()
+		drawing = ""
 		last_direction = 0
 		queue_redraw()
 		
@@ -35,7 +37,8 @@ func _input(event: InputEvent) -> void:
 			var vector = new_line - last_line
 			var new_direction = get_direction(vector.angle())
 			if new_direction != last_direction or last_direction == 0:
-				drawing.append(new_direction)
+				#drawing.append(new_direction)
+				drawing += str(new_direction)
 			last_direction = new_direction
 			queue_redraw()
 		last_line = new_line

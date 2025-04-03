@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://da18pqlbdqqdp"
-path="res://.godot/imported/fox.png-37971faff8ea69c8df7a100dd295e2ef.ctex"
+uid="uid://batqlit73m50b"
+path="res://.godot/imported/Ilustración2.png-d880d38943598d233f662dd24139c602.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/fox.png"
-dest_files=["res://.godot/imported/fox.png-37971faff8ea69c8df7a100dd295e2ef.ctex"]
+source_file="res://art/zorro/Attack/Ilustración2.png"
+dest_files=["res://.godot/imported/Ilustración2.png-d880d38943598d233f662dd24139c602.ctex"]
 
 [params]
 

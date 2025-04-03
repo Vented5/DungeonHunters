@@ -43,7 +43,8 @@ func _on_start_pressed() -> void:
 	#	return
 	
 	Multiplayer.set_player_info.rpc("weapon", Global.weapon_scene_path)
-	Multiplayer.set_player_info.rpc("skin", Global.character_texture_path)
+	Multiplayer.set_player_info.rpc("character_path", Global.character_path)
+	Multiplayer.set_player_info.rpc("character", characters[c_selected])
 	Multiplayer.player_loaded.rpc(multiplayer.get_unique_id())
 
 
